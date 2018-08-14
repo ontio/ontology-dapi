@@ -8,16 +8,8 @@ export function registerClient() {
 }
 
 export async function call(path: string, method: string, ...params: any[]) {
-  const msg: MethodCall = { path, method, params };
+  const msg: MethodCall = { path, method, params, type: 'dAPI.js' };
 
-  const result = await windowPostMessageProxy.postMessage<any>(
-    window,
-    {
-      payload: msg,
-      type: 'dAPI.js'
-    },
-    'content-script'
-  );
-
-  return result.payload;
+  const response = await windowPostMessageProxy.postMessage<any>(window, msg, 'content-script');
+  return response.result;
 }

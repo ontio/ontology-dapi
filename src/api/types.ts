@@ -85,4 +85,5 @@ export interface MethodCall {
   path: string;
   method: string;
   params: any[];
+  type: 'dAPI.js';
 }

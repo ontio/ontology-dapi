@@ -7,31 +7,34 @@ export function registerContentProxy() {
   const windowPostMessageProxy = new WindowPostMessageProxy({ name: 'content-script' });
 
   windowPostMessageProxy.addHandler({
-    handle: async (msg) => {
-      const resultPayload = await browser.runtime.sendMessage(msg.payload);
-      return {
-        payload: resultPayload
-      };
-    },
+    handle: (msg) => browser.runtime.sendMessage(msg),
     test: (msg) => msg.type === 'dAPI.js'
   });
 }
 
 export function registerProvider(provider: DApi) {
-  browser.runtime.onMessage.addListener((request: MethodCall, sender) => {
-    const subApi: any = (provider as any)[request.path];
+  browser.runtime.onMessage.addListener((msg: any, sender) => {
+    if (msg.type === 'dAPI.js') {
+      const request = msg as MethodCall;
+      const subApi: any = (provider as any)[request.path];
 
-    if (subApi != null) {
-      // tslint:disable-next-line:ban-types
-      const method: Function | undefined = subApi[request.method];
+      if (subApi != null) {
+        // tslint:disable-next-line:ban-types
+        const method: Function | undefined = subApi[request.method];
 
-      if (method != null) {
-        return method.call(null, ...request.params);
+        if (method != null) {
+          try {
+            const promise: Promise<any> = method.call(null, ...request.params);
+            return promise.then((result) => Promise.resolve({ result }));
+          } catch (e) {
+            return Promise.resolve({ error: e });
+          }
+        } else {
+          return Promise.resolve({ error: 'Unknown dAPI.js method. (' + request.method + ')' });
+        }
       } else {
-        return Promise.reject('Unknown dAPI.js method. (' + request.method + ')');
+        return Promise.resolve({ error: 'Unknown dAPI.js path. (' + request.path + ')' });
       }
-    } else {
-      return Promise.reject('Unknown dAPI.js path. (' + request.path + ')');
     }
   });
 }

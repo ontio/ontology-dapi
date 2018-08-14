@@ -12,4 +12,5 @@ export interface NetworkApi {
   getTransaction: (txHash: string) => Promise<Transaction>;
   getNetwork: () => Promise<Network>;
   getBalance: (address: string) => Promise<Balance>;
+  isConnected: () => Promise<boolean>;
 }
