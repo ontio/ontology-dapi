@@ -1,4 +1,3 @@
-import BigNumber from 'bignumber.js';
 import { Asset, Balance, Block, MerkleProof, Network, Transaction } from '../api/types';
 import { call } from './proxy';
 
@@ -22,7 +21,7 @@ export function getStorage(contract: string, key: string): Promise<string> {
   return call('network', 'getStorage', contract, key);
 }
 
-export function getAllowance(asset: Asset, fromAddress: string, toAddress: string): Promise<BigNumber> {
+export function getAllowance(asset: Asset, fromAddress: string, toAddress: string): Promise<number> {
   return call('network', 'getAllowance', asset, fromAddress, toAddress);
 }
 

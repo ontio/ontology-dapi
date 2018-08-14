@@ -1,5 +1,3 @@
-import BigNumber from 'bignumber.js';
-
 export type Network = 'MAIN' | 'TEST' | 'PRIVATE';
 
 export type Asset = 'ONT' | 'ONG';
@@ -71,8 +69,8 @@ export interface MerkleProof {
 }
 
 export interface Balance {
-  ont: BigNumber;
-  ong: BigNumber;
+  ont: number;
+  ong: number;
 }
 
 export interface OntIdAttribute {

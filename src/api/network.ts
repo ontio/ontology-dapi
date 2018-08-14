@@ -1,4 +1,3 @@
-import BigNumber from 'bignumber.js';
 import { Asset, Balance, Block, MerkleProof, Network, Transaction } from './types';
 
 export interface NetworkApi {
@@ -7,7 +6,7 @@ export interface NetworkApi {
   getBlockHeight: () => Promise<number>;
   getMerkleProof: (txHash: string) => Promise<MerkleProof>;
   getStorage: (contract: string, key: string) => Promise<string>;
-  getAllowance: (asset: Asset, fromAddress: string, toAddress: string) => Promise<BigNumber>;
+  getAllowance: (asset: Asset, fromAddress: string, toAddress: string) => Promise<number>;
   getBlock: (block: number | string) => Promise<Block>;
   getTransaction: (txHash: string) => Promise<Transaction>;
   getNetwork: () => Promise<Network>;
