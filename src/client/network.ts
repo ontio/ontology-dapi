@@ -1,46 +1,49 @@
+import { NetworkApi } from '../api/network';
 import { Asset, Balance, Block, MerkleProof, Network, Transaction } from '../api/types';
 import { call } from './proxy';
 
-export function getGenerateBlockTime(): Promise<number> {
-  return call('network', 'getGenerateBlockTime');
-}
+export const networkApi: NetworkApi = {
+  getGenerateBlockTime() {
+    return call<number>('network.getGenerateBlockTime');
+  },
 
-export function getNodeCount(): Promise<number> {
-  return call('network', 'getNodeCount');
-}
+  getNodeCount() {
+    return call<number>('network.getNodeCount');
+  },
 
-export function getBlockHeight(): Promise<number> {
-  return call('network', 'getBlockHeight');
-}
+  getBlockHeight() {
+    return call<number>('network.getBlockHeight');
+  },
 
-export function getMerkleProof(txHash: string): Promise<MerkleProof> {
-  return call('network', 'getMerkleProof', txHash);
-}
+  getMerkleProof(txHash: string) {
+    return call<MerkleProof>('network.getMerkleProof', txHash);
+  },
 
-export function getStorage(contract: string, key: string): Promise<string> {
-  return call('network', 'getStorage', contract, key);
-}
+  getStorage(contract: string, key: string) {
+    return call<string>('network.getStorage', contract, key);
+  },
 
-export function getAllowance(asset: Asset, fromAddress: string, toAddress: string): Promise<number> {
-  return call('network', 'getAllowance', asset, fromAddress, toAddress);
-}
+  getAllowance(asset: Asset, fromAddress: string, toAddress: string) {
+    return call<number>('network.getAllowance', asset, fromAddress, toAddress);
+  },
 
-export function getBlock(block: number | string): Promise<Block> {
-  return call('network', 'getBlock', block);
-}
+  getBlock(block: number | string) {
+    return call<Block>('network.getBlock', block);
+  },
 
-export function getTransaction(txHash: string): Promise<Transaction> {
-  return call('network', 'getTransaction', txHash);
-}
+  getTransaction(txHash: string) {
+    return call<Transaction>('network.getTransaction', txHash);
+  },
 
-export function getNetwork(): Promise<Network> {
-  return call('network', 'getNetwork');
-}
+  getNetwork() {
+    return call<Network>('network.getNetwork');
+  },
 
-export function getBalance(address: string): Promise<Balance> {
-  return call('network', 'getBalance', address);
-}
+  getBalance(address: string) {
+    return call<Balance>('network.getBalance', address);
+  },
 
-export function isConnected(): Promise<boolean> {
-  return call('network', 'isConnected');
-}
+  isConnected() {
+    return call<boolean>('network.isConnected');
+  }
+};

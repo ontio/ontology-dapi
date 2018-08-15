@@ -53,7 +53,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@ont-community/window-post-message-proxy": "^0.2.8",
+    "@ont-community/window-post-message-proxy": "^0.2.9",
     "uuid": "^3.3.2",
     "webextension-polyfill-ts": "^0.8.7"
   }

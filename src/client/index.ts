@@ -1,6 +1,6 @@
 import { DApi } from '../api';
-import * as asset from './asset';
-import * as network from './network';
+import { assetApi as asset } from './asset';
+import { networkApi as network } from './network';
 import { registerClient } from './proxy';
 import * as utils from './utils';
 

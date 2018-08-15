@@ -78,10 +78,3 @@ export interface OntIdAttribute {
   type: string;
   value: string;
 }
-
-export interface MethodCall {
-  path: string;
-  method: string;
-  params: any[];
-  type: 'dAPI.js';
-}

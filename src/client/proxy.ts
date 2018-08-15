@@ -1,15 +1,18 @@
 import { WindowPostMessageProxy } from '@ont-community/window-post-message-proxy';
-import { MethodCall } from '../api/types';
+import { Rpc } from '../rpc/rpc';
 
-let windowPostMessageProxy: WindowPostMessageProxy;
+let windowProxy: WindowPostMessageProxy;
+let rpc: Rpc;
 
 export function registerClient() {
-  windowPostMessageProxy = new WindowPostMessageProxy({ name: 'page' });
+  windowProxy = new WindowPostMessageProxy({ name: 'page', target: 'content-script', logMessages: true });
+  rpc = new Rpc({
+    source: 'page',
+    destination: 'background',
+    postMessage: windowProxy.postMessage.bind(windowProxy, window)
+  });
 }
 
-export async function call(path: string, method: string, ...params: any[]) {
-  const msg: MethodCall = { path, method, params, type: 'dAPI.js' };
-
-  const response = await windowPostMessageProxy.postMessage<any>(window, msg, 'content-script');
-  return response.result;
+export async function call<RESULT>(method: string, ...params: any[]) {
+  return rpc.call<RESULT>(method, ...params);
 }
