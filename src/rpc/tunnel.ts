@@ -26,6 +26,7 @@ export interface TunnelOptions {
   postMessage?: PostMessageType;
   addListener?: AddListenerType;
   messageHandler?: MessageHandlerType;
+  logMessages?: boolean;
 }
 
 export class Tunnel<T = any> {
@@ -34,11 +35,14 @@ export class Tunnel<T = any> {
   private postMessage?: PostMessageType;
   private messageHandler?: MessageHandlerType;
 
+  private logMessages?: boolean;
+
   constructor(options: TunnelOptions) {
     this.source = options.source;
     this.destination = options.destination;
     this.postMessage = options.postMessage;
     this.messageHandler = options.messageHandler;
+    this.logMessages = options.logMessages;
 
     if (options.addListener === undefined && options.postMessage === undefined) {
       throw new Error('Either addListener or postMessage must be present.');
@@ -63,6 +67,12 @@ export class Tunnel<T = any> {
       throw new Error('PostMessage was not specified.');
     }
 
+    if (this.logMessages) {
+      // tslint:disable-next-line:max-line-length
+      // tslint:disable-next-line:no-console
+      console.warn(`Tunnel: (${this.source}): Sending`, JSON.stringify(msg, null, '  '));
+    }
+
     const response: Response<RESULT> = await this.postMessage(request);
 
     if (response.error !== undefined) {
@@ -73,12 +83,18 @@ export class Tunnel<T = any> {
   }
 
   private onMessage(request: Request): Promise<Response> | void {
-    if (request.destination === this.source) {
+    if (request.destination === this.source && request.source === this.destination) {
       let promise: Promise<any>;
 
       try {
         if (this.messageHandler === undefined) {
           throw new Error('MessageHandler was not specified.');
+        }
+
+        if (this.logMessages) {
+          // tslint:disable-next-line:max-line-length
+          // tslint:disable-next-line:no-console
+          console.warn(`Tunnel: (${this.source}): Receiving`, JSON.stringify(request.payload, null, '  '));
         }
 
         const response = this.messageHandler(request.payload);

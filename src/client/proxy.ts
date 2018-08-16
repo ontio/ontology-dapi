@@ -5,10 +5,11 @@ let windowProxy: WindowPostMessageProxy;
 let rpc: Rpc;
 
 export function registerClient() {
-  windowProxy = new WindowPostMessageProxy({ name: 'page', target: 'content-script', logMessages: true });
+  windowProxy = new WindowPostMessageProxy({ name: 'page', target: 'content-script' });
   rpc = new Rpc({
     source: 'page',
     destination: 'background',
+    logMessages: true,
     postMessage: windowProxy.postMessage.bind(windowProxy, window)
   });
 }

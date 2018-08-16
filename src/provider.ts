@@ -6,7 +6,10 @@ import { MethodType, Rpc } from './rpc/rpc';
 let rpc: Rpc;
 
 export function registerContentProxy() {
-  const windowPostMessageProxy = new WindowPostMessageProxy({ name: 'content-script', target: 'page' });
+  const windowPostMessageProxy = new WindowPostMessageProxy({
+    name: 'content-script',
+    target: 'page'
+  });
 
   windowPostMessageProxy.addHandler({
     handle: (msg) => browser.runtime.sendMessage(msg),
@@ -17,7 +20,8 @@ export function registerContentProxy() {
 export function registerProvider(provider: DApi) {
   rpc = new Rpc({
     source: 'background',
-    destination: 'source',
+    destination: 'page',
+    logMessages: true,
     addListener: browser.runtime.onMessage.addListener
   });
 
