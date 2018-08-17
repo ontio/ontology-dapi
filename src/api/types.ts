@@ -29,6 +29,7 @@ export type ParameterType =
   | 'Address';
 
 export interface Parameter {
+  name: string;
   type: ParameterType;
   value: string;
 }
