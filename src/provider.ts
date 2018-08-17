@@ -35,10 +35,12 @@ export function registerProvider(provider: DApi) {
 
   checkedRegister('asset.getDefaultAccount', provider.asset.getDefaultAccount);
   checkedRegister('asset.getOwnAccounts', provider.asset.getOwnAccounts);
+  checkedRegister('asset.getPublicKey', provider.asset.getPublicKey);
   checkedRegister('asset.makeTransfer', provider.asset.makeTransfer);
 
   checkedRegister('identity.getOwnIdentities', provider.identity.getOwnIdentities);
   checkedRegister('identity.getDefaultIdentity', provider.identity.getDefaultIdentity);
+  checkedRegister('identity.getPublicKeys', provider.identity.getPublicKeys);
   checkedRegister('identity.getDDO', provider.identity.getDDO);
   checkedRegister('identity.getAttributes', provider.identity.getAttributes);
   checkedRegister('identity.addAttributes', provider.identity.addAttributes);

@@ -16,11 +16,11 @@ export interface IdentityApi {
   getDefaultIdentity(): Promise<string>;
 
   /**
-   * Returns public key corresponding to own identity.
+   * Returns public keys corresponding to own identity.
    *
    * @throws NO_IDENTITY, WRONG_IDENTITY
    */
-  getPublicKey(identity: string): Promise<string>;
+  getPublicKeys(identity: string): Promise<string[]>;
 
   getDDO(identity: string): Promise<OntIdDDO>;
   getAttributes(identity: string): Promise<OntIdAttribute[]>;

@@ -9,8 +9,8 @@ export const identityApi: IdentityApi = {
   getDefaultIdentity() {
     return call<string>('identity.getDefaultIdentity');
   },
-  getPublicKey(identity: string) {
-    return call<string>('identity.getPublicKey', identity);
+  getPublicKeys(identity: string) {
+    return call<string[]>('identity.getPublicKeys', identity);
   },
   getDDO(identity: string) {
     return call<OntIdDDO>('identity.getDDO', identity);
