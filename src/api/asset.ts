@@ -18,7 +18,8 @@ export interface AssetApi {
   /**
    * Returns public key corresponding to own account.
    *
-   * @throws NO_ACCOUNT, WRONG_ACCOUNT
+   * @param account Own account
+   * @throws NO_ACCOUNT, WRONG_ACCOUNT, MALFORMED_ACCOUNT
    */
   getPublicKey(account: string): Promise<string>;
 
@@ -30,7 +31,7 @@ export interface AssetApi {
    * @param recipient Recipient of the transfer
    * @param asset Asset to send
    * @param amount Amount to send
-   * @throws CANCELED, MALFORMED_SENDER, MALFORMED_RECIPIENT, WRONG_SENDER
+   * @throws NO_ACCOUNT, WRONG_ACCOUNT, MALFORMED_ACCOUNT, CANCELED
    */
   makeTransfer(sender: string, recipient: string, asset: Asset, amount: number): Promise<void>;
 }
