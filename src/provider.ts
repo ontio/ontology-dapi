@@ -37,6 +37,20 @@ export function registerProvider(provider: DApi) {
   checkedRegister('asset.getOwnAccounts', provider.asset.getOwnAccounts);
   checkedRegister('asset.makeTransfer', provider.asset.makeTransfer);
 
+  checkedRegister('identity.getOwnIdentities', provider.identity.getOwnIdentities);
+  checkedRegister('identity.getDefaultIdentity', provider.identity.getDefaultIdentity);
+  checkedRegister('identity.getDDO', provider.identity.getDDO);
+  checkedRegister('identity.getAttributes', provider.identity.getAttributes);
+  checkedRegister('identity.addAttributes', provider.identity.addAttributes);
+  checkedRegister('identity.removeAttribute', provider.identity.removeAttribute);
+
+  checkedRegister('message.signMessage', provider.message.signMessage);
+  checkedRegister('message.verifyMessage', provider.message.verifyMessage);
+  checkedRegister('message.verifyMessagePk', provider.message.verifyMessagePk);
+  checkedRegister('message.signMessageHash', provider.message.signMessageHash);
+  checkedRegister('message.verifyMessageHash', provider.message.verifyMessageHash);
+  checkedRegister('message.verifyMessageHashPk', provider.message.verifyMessageHashPk);
+
   checkedRegister('network.getAllowance', provider.network.getAllowance);
   checkedRegister('network.getBalance', provider.network.getBalance);
   checkedRegister('network.getBlock', provider.network.getBlock);
@@ -48,4 +62,8 @@ export function registerProvider(provider: DApi) {
   checkedRegister('network.getStorage', provider.network.getStorage);
   checkedRegister('network.getTransaction', provider.network.getTransaction);
   checkedRegister('network.isConnected', provider.network.isConnected);
+
+  checkedRegister('smartContract.invoke', provider.smartContract.invoke);
+  checkedRegister('smartContract.invokeRead', provider.smartContract.invokeRead);
+  checkedRegister('smartContract.deploy', provider.smartContract.deploy);
 }

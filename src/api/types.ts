@@ -13,6 +13,21 @@ export enum TransactionType {
 
 export type EventListener = (data: any) => void;
 
+export type ParameterType =
+  | 'Boolean'
+  | 'Integer'
+  | 'ByteArray'
+  | 'Interface'
+  | 'Array'
+  | 'Struct'
+  | 'Map'
+  | 'String'
+  | 'Int'
+  | 'Long'
+  | 'IntArray'
+  | 'LongArray'
+  | 'Address';
+
 export interface Parameter {
   value: string;
 }
@@ -77,4 +92,8 @@ export interface OntIdAttribute {
   key: string;
   type: string;
   value: string;
+}
+
+export interface OntIdDDO {
+  attributes: OntIdAttribute[];
 }
