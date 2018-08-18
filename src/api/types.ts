@@ -13,25 +13,11 @@ export enum TransactionType {
 
 export type EventListener = (data: any) => void;
 
-export type ParameterType =
-  | 'Boolean'
-  | 'Integer'
-  | 'ByteArray'
-  | 'Interface'
-  | 'Array'
-  | 'Struct'
-  | 'Map'
-  | 'String'
-  | 'Int'
-  | 'Long'
-  | 'IntArray'
-  | 'LongArray'
-  | 'Address';
+export type ParameterType = 'Boolean' | 'Integer' | 'ByteArray' | 'Struct' | 'Map' | 'String';
 
 export interface Parameter {
-  name: string;
   type: ParameterType;
-  value: string;
+  value: any;
 }
 
 export interface BlockHeader {
