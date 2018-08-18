@@ -68,4 +68,8 @@ export function registerProvider(provider: DApi) {
   checkedRegister('smartContract.invoke', provider.smartContract.invoke);
   checkedRegister('smartContract.invokeRead', provider.smartContract.invokeRead);
   checkedRegister('smartContract.deploy', provider.smartContract.deploy);
+
+  checkedRegister('provider.isInstalled', provider.provider.isInstalled);
+  checkedRegister('provider.getName', provider.provider.getName);
+  checkedRegister('provider.getVersion', provider.provider.getVersion);
 }
