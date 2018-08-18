@@ -33,5 +33,5 @@ export interface AssetApi {
    * @param amount Amount to send
    * @throws NO_ACCOUNT, WRONG_ACCOUNT, MALFORMED_ACCOUNT, CANCELED
    */
-  makeTransfer(sender: string, recipient: string, asset: Asset, amount: number): Promise<void>;
+  makeTransfer(sender: string, recipient: string, asset: Asset, amount: number): Promise<string>;
 }

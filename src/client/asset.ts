@@ -16,6 +16,6 @@ export const assetApi: AssetApi = {
   },
 
   makeTransfer(sender: string, recipient: string, asset: Asset, amount: number) {
-    return call<void>('asset.makeTransfer', sender, recipient, asset, amount);
+    return call<string>('asset.makeTransfer', sender, recipient, asset, amount);
   }
 };
