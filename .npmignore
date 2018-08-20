@@ -4,7 +4,6 @@ node_modules
 
 
 /docs/_build/
-lib/
 
 # Logs
 *.log
