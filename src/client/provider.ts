@@ -1,17 +1,10 @@
 import { timeout } from 'promise-timeout';
 import { ProviderApi } from '../api/provider';
+import { Provider } from '../api/types';
 import { call } from './proxy';
 
 export const providerApi: ProviderApi = {
-  isInstalled() {
-    return timeout(call<boolean>('provider.isInstalled'), 1000).catch(() => false);
-  },
-
-  getName() {
-    return call<string>('provider.getName');
-  },
-
-  getVersion() {
-    return call<string>('provider.getVersion');
+  getProvider() {
+    return timeout(call<Provider>('provider.getProvider'), 1000).catch(() => Promise.reject('NO_PROVIDER'));
   }
 };

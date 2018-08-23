@@ -1,4 +1,4 @@
-import { Parameter } from './types';
+import { Parameter, Response } from './types';
 
 export interface SmartContractApi {
   /**
@@ -23,7 +23,7 @@ export interface SmartContractApi {
     gasPrice: number,
     gasLimit: number,
     addresses: string[]
-  ): Promise<void>;
+  ): Promise<Response>;
 
   /**
    * Initiates a method call to a smart contract with supplied parameters in read only mode (preExec).

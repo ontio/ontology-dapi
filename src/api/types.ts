@@ -1,4 +1,4 @@
-export type Network = 'MAIN' | 'TEST' | 'PRIVATE';
+export type NetworkType = 'MAIN' | 'TEST' | 'PRIVATE';
 
 export type Asset = 'ONT' | 'ONG';
 
@@ -84,4 +84,22 @@ export interface OntIdAttribute {
 
 export interface OntIdDDO {
   attributes: OntIdAttribute[];
+}
+
+export interface Provider {
+  name: string;
+  version: string;
+  compatibility: string[];
+}
+
+export interface Network {
+  type: NetworkType;
+  address: string;
+}
+
+export type Result = string[];
+
+export interface Response {
+  transaction: string;
+  results: Result[];
 }

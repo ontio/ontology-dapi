@@ -1,5 +1,5 @@
 import { SmartContractApi } from '../api/smartContract';
-import { Parameter } from '../api/types';
+import { Parameter, Response } from '../api/types';
 import { call } from './proxy';
 
 export const smartContractApi: SmartContractApi = {
@@ -11,8 +11,8 @@ export const smartContractApi: SmartContractApi = {
     gasPrice: number,
     gasLimit: number,
     addresses: string[]
-  ): Promise<void> {
-    return call<void>('smartContract.invoke', account, contract, method, parameters, gasPrice, gasLimit, addresses);
+  ) {
+    return call<Response>('smartContract.invoke', account, contract, method, parameters, gasPrice, gasLimit, addresses);
   },
 
   invokeRead(contract: string, method: string, parameters: Parameter[]): Promise<any> {
