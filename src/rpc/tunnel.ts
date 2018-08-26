@@ -1,9 +1,16 @@
+import { Runtime } from 'webextension-polyfill-ts';
+
 export type CallbackType = (msg: Request) => Promise<Response> | void;
 export type PostMessageType = (msg: Request) => Promise<Response>;
 
 export type AddListenerType = (callback: CallbackType) => void;
 
-export type MessageHandlerType = (msg: any) => any;
+export interface Caller {
+  url?: string;
+  id?: string;
+}
+
+export type MessageHandlerType = (msg: any, caller: Caller) => any;
 
 export interface Request {
   payload: any;
@@ -82,7 +89,7 @@ export class Tunnel<T = any> {
     }
   }
 
-  private onMessage(request: Request): Promise<Response> | void {
+  private onMessage(request: Request, sender: Runtime.MessageSender): Promise<Response> | void {
     if (request.destination === this.source && request.source === this.destination) {
       let promise: Promise<any>;
 
@@ -97,7 +104,12 @@ export class Tunnel<T = any> {
           console.warn(`Tunnel: (${this.source}): Receiving`, JSON.stringify(request.payload, null, '  '));
         }
 
-        const response = this.messageHandler(request.payload);
+        const caller: Caller = {
+          id: sender.id,
+          url: sender.url
+        };
+
+        const response = this.messageHandler(request.payload, caller);
         promise = Promise.resolve(response);
       } catch (e) {
         promise = Promise.reject(e);

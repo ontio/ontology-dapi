@@ -1,4 +1,4 @@
-import { Tunnel, TunnelOptions } from './tunnel';
+import { Caller, Tunnel, TunnelOptions } from './tunnel';
 
 export type MethodType = (...params: any[]) => any;
 
@@ -31,13 +31,13 @@ export class Rpc {
     this.methods.set(name, method);
   }
 
-  private messageHandler(msg: MethodCallType) {
+  private messageHandler(msg: MethodCallType, caller: Caller) {
     const method = this.methods.get(msg.method);
 
     if (method === undefined) {
       throw new Error('Unregistered method call: ' + msg.method);
     }
 
-    return method.call(null, ...msg.params);
+    return method.call(caller, ...msg.params);
   }
 }
