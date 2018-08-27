@@ -34,11 +34,8 @@ export function registerProvider(provider: DApi) {
   }
 
   checkedRegister('asset.getDefaultAccount', provider.asset.getDefaultAccount);
-  checkedRegister('asset.getOwnAccounts', provider.asset.getOwnAccounts);
-  checkedRegister('asset.getPublicKey', provider.asset.getPublicKey);
   checkedRegister('asset.makeTransfer', provider.asset.makeTransfer);
 
-  checkedRegister('identity.getOwnIdentities', provider.identity.getOwnIdentities);
   checkedRegister('identity.getDefaultIdentity', provider.identity.getDefaultIdentity);
   checkedRegister('identity.getPublicKeys', provider.identity.getPublicKeys);
   checkedRegister('identity.getDDO', provider.identity.getDDO);
@@ -48,10 +45,8 @@ export function registerProvider(provider: DApi) {
 
   checkedRegister('message.signMessage', provider.message.signMessage);
   checkedRegister('message.verifyMessage', provider.message.verifyMessage);
-  checkedRegister('message.verifyMessagePk', provider.message.verifyMessagePk);
   checkedRegister('message.signMessageHash', provider.message.signMessageHash);
   checkedRegister('message.verifyMessageHash', provider.message.verifyMessageHash);
-  checkedRegister('message.verifyMessageHashPk', provider.message.verifyMessageHashPk);
 
   checkedRegister('network.getAllowance', provider.network.getAllowance);
   checkedRegister('network.getBalance', provider.network.getBalance);

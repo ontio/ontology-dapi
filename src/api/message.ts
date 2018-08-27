@@ -1,67 +1,43 @@
+import { Signature } from './types';
+
 export interface MessageApi {
   /**
-   * Initiates signing of arbitrary messageHash by the account or identity.
+   * Initiates signing of arbitrary messageHash by the user account or identity.
    *
-   * @param address Own account or identity
    * @param messageHash Hex encoded message hash
-   * @returns Hex encoded signature
+   * @returns Hex encoded signature with hex encoded public key
    *
-   * @throws NO_ADDRESS, WRONG_ADDRESS, MALFORMED_ADDRESS, MALFORMED_MESSAGE
+   * @throws NO_ADDRESS, MALFORMED_MESSAGE
    */
-  signMessageHash(address: string, messageHash: string): Promise<string>;
+  signMessageHash(messageHash: string): Promise<Signature>;
 
   /**
-   * Verifies that the signature is created by the account or identity.
+   * Verifies that the signature is valid signature of messageHash.
    *
-   * @param address Own account or identity
    * @param messageHash Hex encoded message hash
-   * @param signature Hex encoded signature
+   * @param signature Hex encoded signature with hex encoded public key
    *
-   * @throws NO_ADDRESS, WRONG_ADDRESS, MALFORMED_ADDRESS, MALFORMED_MESSAGE, MALFORMED_SIGNATURE
+   * @throws MALFORMED_MESSAGE, MALFORMED_SIGNATURE
    */
-  verifyMessageHash(address: string, messageHash: string, signature: string): Promise<boolean>;
+  verifyMessageHash(messageHash: string, signature: Signature): Promise<boolean>;
 
   /**
-   * Verifies that the signature is created by a private key corresponding to the publicKey.
+   * Initiates signing of arbitrary message by the user account or identity.
    *
-   * @param publicKey Arbitrary hex encoded public key
-   * @param messageHash Hex encoded message hash
-   * @param signature Hex encoded signature
-   *
-   * @throws MALFORMED_PUBLIC_KEY, MALFORMED_MESSAGE, MALFORMED_SIGNATURE
-   */
-  verifyMessageHashPk(publicKey: string, messageHash: string, signature: string): Promise<boolean>;
-
-  /**
-   * Initiates signing of arbitrary message by the account or identity.
-   *
-   * @param address Own account or identity
    * @param message Text message
-   * @returns Hex encoded signature
+   * @returns Hex encoded signature with hex encoded public key
    *
-   * @throws NO_ADDRESS, WRONG_ADDRESS, MALFORMED_ADDRESS
+   * @throws NO_ADDRESS, MALFORMED_ADDRESS
    */
-  signMessage(address: string, message: string): Promise<string>;
+  signMessage(message: string): Promise<Signature>;
 
   /**
-   * Verifies that the signature is created by the account or identity.
+   * Verifies that the signature is valid signature of message.
    *
-   * @param address Own account or identity
    * @param message Text message
-   * @param signature Hex encoded signature
+   * @param signature Hex encoded signature with hex encoded public key
    *
-   * @throws NO_ADDRESS, WRONG_ADDRESS, MALFORMED_ADDRESS, MALFORMED_SIGNATURE
+   * @throws MALFORMED_SIGNATURE
    */
-  verifyMessage(address: string, message: string, signature: string): Promise<boolean>;
-
-  /**
-   * Verifies that the signature is created by a private key corresponding to the publicKey.
-   *
-   * @param publicKey Arbitrary hex encoded public key
-   * @param message Text message
-   * @param signature Hex encoded signature
-   *
-   * @throws MALFORMED_PUBLIC_KEY, MALFORMED_SIGNATURE
-   */
-  verifyMessagePk(publicKey: string, message: string, signature: string): Promise<boolean>;
+  verifyMessage(message: string, signature: Signature): Promise<boolean>;
 }

@@ -4,15 +4,14 @@ import { call } from './proxy';
 
 export const smartContractApi: SmartContractApi = {
   invoke(
-    account: string,
     contract: string,
     method: string,
     parameters: Parameter[],
     gasPrice: number,
     gasLimit: number,
-    addresses: string[]
+    requireIdentity: boolean
   ) {
-    return call<Response>('smartContract.invoke', account, contract, method, parameters, gasPrice, gasLimit, addresses);
+    return call<Response>('smartContract.invoke', contract, method, parameters, gasPrice, gasLimit, requireIdentity);
   },
 
   invokeRead(contract: string, method: string, parameters: Parameter[]): Promise<any> {
@@ -20,7 +19,6 @@ export const smartContractApi: SmartContractApi = {
   },
 
   deploy(
-    account: string,
     code: string,
     name: string,
     version: string,
@@ -33,7 +31,6 @@ export const smartContractApi: SmartContractApi = {
   ): Promise<void> {
     return call<void>(
       'smartContract.deploy',
-      account,
       code,
       name,
       version,

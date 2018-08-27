@@ -103,3 +103,8 @@ export interface Response {
   transaction: string;
   results: Result[];
 }
+
+export interface Signature {
+  publicKey: string;
+  data: string;
+}

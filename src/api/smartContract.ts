@@ -3,26 +3,23 @@ import { Parameter, Response } from './types';
 export interface SmartContractApi {
   /**
    * Initiates a method call to a smart contract with supplied parameters.
-   * The account will be set as payer of the transaction.
    * Addresses can specify additional accounts or identites whose signature will be required.
    *
-   * @param account Own account
    * @param contract Hex address of contract
    * @param method Method name
    * @param parameters Method parameters
    * @param gasPrice Suggested price of gas
    * @param gasLimit Suggested limit of gas
-   * @param addresses Additional own accounts and identites
-   * @throws NO_ACCOUNT, WRONG_ACCOUNT, MALFORMED_ACCOUNT, MALFORMED_CONTRACT, MALFORMED_ADDRESS
+   * @param requireIdentity Is signature by identity required ?
+   * @throws NO_ACCOUNT, MALFORMED_CONTRACT
    */
   invoke(
-    account: string,
     contract: string,
     method: string,
     parameters: Parameter[],
     gasPrice: number,
     gasLimit: number,
-    addresses: string[]
+    requireIdentity: boolean
   ): Promise<Response>;
 
   /**
@@ -38,9 +35,7 @@ export interface SmartContractApi {
   /**
    * Initiates deployment of smart contract.
    * The code parameter represents compiled code of smart contract for NEOVM.
-   * The account will be set as payer of the transaction.
    *
-   * @param account Own account
    * @param code Compiled smart contract code
    * @param name Name
    * @param version Version
@@ -50,10 +45,9 @@ export interface SmartContractApi {
    * @param needStorage Does the smart contract need storage?
    * @param gasPrice Suggested price of gas
    * @param gasLimit Suggested limit of gas
-   * @throws NO_ACCOUNT, WRONG_ACCOUNT, MALFORMED_ACCOUNT
+   * @throws NO_ACCOUNT
    */
   deploy(
-    account: string,
     code: string,
     name: string,
     version: string,

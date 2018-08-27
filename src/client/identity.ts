@@ -3,9 +3,6 @@ import { OntIdAttribute, OntIdDDO } from '../api/types';
 import { call } from './proxy';
 
 export const identityApi: IdentityApi = {
-  getOwnIdentities() {
-    return call<string[]>('identity.getOwnIdentities');
-  },
   getDefaultIdentity() {
     return call<string>('identity.getDefaultIdentity');
   },
@@ -18,10 +15,10 @@ export const identityApi: IdentityApi = {
   getAttributes(identity: string) {
     return call<OntIdAttribute[]>('identity.getAttributes', identity);
   },
-  addAttributes(identity: string, attributes: OntIdAttribute[]) {
-    return call<void>('identity.addAttributes', identity, attributes);
+  addAttributes(attributes: OntIdAttribute[]) {
+    return call<void>('identity.addAttributes', attributes);
   },
-  removeAttribute(identity: string, key: string) {
-    return call<void>('identity.removeAttribute', identity, key);
+  removeAttribute(key: string) {
+    return call<void>('identity.removeAttribute', key);
   }
 };
