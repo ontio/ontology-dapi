@@ -4,6 +4,7 @@ import { MessageApi } from './message';
 import { NetworkApi } from './network';
 import { ProviderApi } from './provider';
 import { SmartContractApi } from './smartContract';
+import { UtilsApi } from './utils';
 
 export * from './types';
 export { AssetApi } from './asset';
@@ -20,4 +21,5 @@ export interface DApi {
   network: NetworkApi;
   provider: ProviderApi;
   smartContract: SmartContractApi;
+  utils: UtilsApi;
 }

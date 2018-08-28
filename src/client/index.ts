@@ -6,7 +6,7 @@ import { networkApi as network } from './network';
 import { providerApi as provider } from './provider';
 import { registerClient } from './proxy';
 import { smartContractApi as smartContract } from './smartContract';
-import * as utils from './utils';
+import { utilsApi as utils } from './utils';
 
 const api: DApi = {
   asset,
@@ -14,7 +14,8 @@ const api: DApi = {
   message,
   network,
   provider,
-  smartContract
+  smartContract,
+  utils
 };
 
-export { registerClient, utils, api };
+export { registerClient, api };
