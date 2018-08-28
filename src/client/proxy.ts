@@ -4,8 +4,19 @@ import { Rpc } from '../rpc/rpc';
 let windowProxy: WindowPostMessageProxy;
 let rpc: Rpc;
 
-export function registerClient() {
-  windowProxy = new WindowPostMessageProxy({ name: 'page', target: 'content-script' });
+export function registerClient({
+  logMessages = false,
+  logWarnings = false
+}: {
+  logMessages?: boolean;
+  logWarnings?: boolean;
+}) {
+  windowProxy = new WindowPostMessageProxy({
+    name: 'page',
+    target: 'content-script',
+    logMessages,
+    suppressWarnings: !logWarnings
+  });
   rpc = new Rpc({
     source: 'page',
     destination: 'background',

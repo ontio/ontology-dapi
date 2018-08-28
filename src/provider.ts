@@ -5,9 +5,16 @@ import { MethodType, Rpc } from './rpc/rpc';
 
 let rpc: Rpc;
 
-export function registerContentProxy() {
+export function registerContentProxy({
+  logMessages = false,
+  logWarnings = false
+}: {
+  logMessages?: boolean;
+  logWarnings?: boolean;
+}) {
   const windowPostMessageProxy = new WindowPostMessageProxy({
-    logMessages: true,
+    logMessages,
+    suppressWarnings: !logWarnings,
     name: 'content-script',
     target: 'page'
   });
@@ -18,11 +25,11 @@ export function registerContentProxy() {
   });
 }
 
-export function registerProvider(provider: DApi) {
+export function registerProvider({ provider, logMessages }: { provider: DApi; logMessages: boolean }) {
   rpc = new Rpc({
     source: 'background',
     destination: 'page',
-    logMessages: true,
+    logMessages,
     addListener: browser.runtime.onMessage.addListener
   });
 
