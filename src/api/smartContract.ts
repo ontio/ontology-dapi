@@ -23,10 +23,10 @@ export interface SmartContractApi {
   }: {
     contract: string;
     method: string;
-    parameters: Parameter[];
+    parameters?: Parameter[];
     gasPrice?: number;
     gasLimit?: number;
-    requireIdentity: boolean;
+    requireIdentity?: boolean;
   }): Promise<Response>;
 
   /**
@@ -44,7 +44,7 @@ export interface SmartContractApi {
   }: {
     contract: string;
     method: string;
-    parameters: Parameter[];
+    parameters?: Parameter[];
   }): Promise<any>;
 
   /**
@@ -74,12 +74,12 @@ export interface SmartContractApi {
     gasLimit
   }: {
     code: string;
-    name: string;
-    version: string;
-    author: string;
-    email: string;
-    description: string;
-    needStorage: boolean;
+    name?: string;
+    version?: string;
+    author?: string;
+    email?: string;
+    description?: string;
+    needStorage?: boolean;
     gasPrice?: number;
     gasLimit?: number;
   }): Promise<void>;
