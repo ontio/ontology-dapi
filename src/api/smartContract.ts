@@ -13,14 +13,21 @@ export interface SmartContractApi {
    * @param requireIdentity Is signature by identity required ?
    * @throws NO_ACCOUNT, MALFORMED_CONTRACT
    */
-  invoke(
-    contract: string,
-    method: string,
-    parameters: Parameter[],
-    gasPrice: number,
-    gasLimit: number,
-    requireIdentity: boolean
-  ): Promise<Response>;
+  invoke({
+    contract,
+    method,
+    parameters,
+    gasPrice,
+    gasLimit,
+    requireIdentity
+  }: {
+    contract: string;
+    method: string;
+    parameters: Parameter[];
+    gasPrice?: number;
+    gasLimit?: number;
+    requireIdentity: boolean;
+  }): Promise<Response>;
 
   /**
    * Initiates a method call to a smart contract with supplied parameters in read only mode (preExec).
@@ -30,7 +37,15 @@ export interface SmartContractApi {
    * @param parameters Method parameters
    * @throws MALFORMED_CONTRACT
    */
-  invokeRead(contract: string, method: string, parameters: Parameter[]): Promise<any>;
+  invokeRead({
+    contract,
+    method,
+    parameters
+  }: {
+    contract: string;
+    method: string;
+    parameters: Parameter[];
+  }): Promise<any>;
 
   /**
    * Initiates deployment of smart contract.
@@ -47,15 +62,25 @@ export interface SmartContractApi {
    * @param gasLimit Suggested limit of gas
    * @throws NO_ACCOUNT
    */
-  deploy(
-    code: string,
-    name: string,
-    version: string,
-    author: string,
-    email: string,
-    description: string,
-    needStorage: boolean,
-    gasPrice: number,
-    gasLimit: number
-  ): Promise<void>;
+  deploy({
+    code,
+    name,
+    version,
+    author,
+    email,
+    description,
+    needStorage,
+    gasPrice,
+    gasLimit
+  }: {
+    code: string;
+    name: string;
+    version: string;
+    author: string;
+    email: string;
+    description: string;
+    needStorage: boolean;
+    gasPrice?: number;
+    gasLimit?: number;
+  }): Promise<void>;
 }

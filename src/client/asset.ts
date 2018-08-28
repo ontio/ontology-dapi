@@ -1,5 +1,4 @@
 import { AssetApi } from '../api/asset';
-import { Asset } from '../api/types';
 import { call } from './proxy';
 
 export const assetApi: AssetApi = {
@@ -7,7 +6,7 @@ export const assetApi: AssetApi = {
     return call<string>('asset.getAccount');
   },
 
-  makeTransfer(recipient: string, asset: Asset, amount: number) {
-    return call<string>('asset.makeTransfer', recipient, asset, amount);
+  makeTransfer(args) {
+    return call<string>('asset.makeTransfer', args);
   }
 };

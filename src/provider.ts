@@ -7,6 +7,7 @@ let rpc: Rpc;
 
 export function registerContentProxy() {
   const windowPostMessageProxy = new WindowPostMessageProxy({
+    logMessages: true,
     name: 'content-script',
     target: 'page'
   });

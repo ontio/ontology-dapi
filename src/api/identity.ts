@@ -14,7 +14,7 @@ export interface IdentityApi {
    * @param identity Arbitrary identity
    * @throws MALFORMED_IDENTITY
    */
-  getDDO(identity: string): Promise<OntIdDDO>;
+  getDDO({ identity }: { identity: string }): Promise<OntIdDDO>;
 
   /**
    * Adds attributes to the user identity.
@@ -22,7 +22,7 @@ export interface IdentityApi {
    * @param attributes Attributes to add
    * @throws NO_IDENTITY
    */
-  addAttributes(attributes: OntIdAttribute[]): Promise<void>;
+  addAttributes({ attributes }: { attributes: OntIdAttribute[] }): Promise<void>;
 
   /**
    * Removes attributes from the user identity.
@@ -30,5 +30,5 @@ export interface IdentityApi {
    * @param key Attribute key to remove
    * @throws NO_IDENTITY
    */
-  removeAttribute(key: string): Promise<void>;
+  removeAttribute({ key }: { key: string }): Promise<void>;
 }

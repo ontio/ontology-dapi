@@ -9,7 +9,7 @@ export interface MessageApi {
    *
    * @throws NO_ADDRESS, MALFORMED_MESSAGE
    */
-  signMessageHash(messageHash: string): Promise<Signature>;
+  signMessageHash({ messageHash }: { messageHash: string }): Promise<Signature>;
 
   /**
    * Verifies that the signature is valid signature of messageHash.
@@ -19,7 +19,7 @@ export interface MessageApi {
    *
    * @throws MALFORMED_MESSAGE, MALFORMED_SIGNATURE
    */
-  verifyMessageHash(messageHash: string, signature: Signature): Promise<boolean>;
+  verifyMessageHash({ messageHash, signature }: { messageHash: string; signature: Signature }): Promise<boolean>;
 
   /**
    * Initiates signing of arbitrary message by the user account or identity.
@@ -29,7 +29,7 @@ export interface MessageApi {
    *
    * @throws NO_ADDRESS, MALFORMED_ADDRESS
    */
-  signMessage(message: string): Promise<Signature>;
+  signMessage({ message }: { message: string }): Promise<Signature>;
 
   /**
    * Verifies that the signature is valid signature of message.
@@ -39,5 +39,5 @@ export interface MessageApi {
    *
    * @throws MALFORMED_SIGNATURE
    */
-  verifyMessage(message: string, signature: Signature): Promise<boolean>;
+  verifyMessage({ message, signature }: { message: string; signature: Signature }): Promise<boolean>;
 }

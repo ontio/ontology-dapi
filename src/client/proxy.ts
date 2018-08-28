@@ -9,7 +9,7 @@ export function registerClient() {
   rpc = new Rpc({
     source: 'page',
     destination: 'background',
-    logMessages: true,
+    logMessages: false,
     postMessage: windowProxy.postMessage.bind(windowProxy, window)
   });
 }
