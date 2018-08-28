@@ -50,7 +50,6 @@ export function registerProvider(provider: DApi) {
   checkedRegister('network.getBalance', provider.network.getBalance);
   checkedRegister('network.getBlock', provider.network.getBlock);
   checkedRegister('network.getBlockHeight', provider.network.getBlockHeight);
-  checkedRegister('network.getGenerateBlockTime', provider.network.getGenerateBlockTime);
   checkedRegister('network.getMerkleProof', provider.network.getMerkleProof);
   checkedRegister('network.getNetwork', provider.network.getNetwork);
   checkedRegister('network.getNodeCount', provider.network.getNodeCount);

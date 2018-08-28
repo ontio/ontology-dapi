@@ -1,7 +1,6 @@
 import { Asset, Balance, Block, MerkleProof, Network, Transaction } from './types';
 
 export interface NetworkApi {
-  getGenerateBlockTime(): Promise<number | null>;
   getNodeCount(): Promise<number>;
   getBlockHeight(): Promise<number>;
   getMerkleProof(txHash: string): Promise<MerkleProof>;

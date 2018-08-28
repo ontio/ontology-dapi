@@ -3,10 +3,6 @@ import { Asset, Balance, Block, MerkleProof, Network, Transaction } from '../api
 import { call } from './proxy';
 
 export const networkApi: NetworkApi = {
-  getGenerateBlockTime() {
-    return call<number>('network.getGenerateBlockTime');
-  },
-
   getNodeCount() {
     return call<number>('network.getNodeCount');
   },
