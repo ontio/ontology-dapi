@@ -6,15 +6,7 @@ export interface IdentityApi {
    *
    * @throws NO_IDENTITY
    */
-  getDefaultIdentity(): Promise<string>;
-
-  /**
-   * Returns public keys corresponding to an identity.
-   *
-   * @param identity Arbitrary identity
-   * @throws MALFORMED_IDENTITY
-   */
-  getPublicKeys(identity: string): Promise<string[]>;
+  getIdentity(): Promise<string>;
 
   /**
    * Queries Description Object of the identity.
@@ -23,14 +15,6 @@ export interface IdentityApi {
    * @throws MALFORMED_IDENTITY
    */
   getDDO(identity: string): Promise<OntIdDDO>;
-
-  /**
-   * Queries attributes attached to the identity.
-   *
-   * @param identity Arbitrary identity
-   * @throws MALFORMED_IDENTITY
-   */
-  getAttributes(identity: string): Promise<OntIdAttribute[]>;
 
   /**
    * Adds attributes to the user identity.

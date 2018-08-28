@@ -33,13 +33,11 @@ export function registerProvider(provider: DApi) {
     rpc.register(name, method);
   }
 
-  checkedRegister('asset.getDefaultAccount', provider.asset.getDefaultAccount);
+  checkedRegister('asset.getAccount', provider.asset.getAccount);
   checkedRegister('asset.makeTransfer', provider.asset.makeTransfer);
 
-  checkedRegister('identity.getDefaultIdentity', provider.identity.getDefaultIdentity);
-  checkedRegister('identity.getPublicKeys', provider.identity.getPublicKeys);
+  checkedRegister('identity.getIdentity', provider.identity.getIdentity);
   checkedRegister('identity.getDDO', provider.identity.getDDO);
-  checkedRegister('identity.getAttributes', provider.identity.getAttributes);
   checkedRegister('identity.addAttributes', provider.identity.addAttributes);
   checkedRegister('identity.removeAttribute', provider.identity.removeAttribute);
 

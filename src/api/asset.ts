@@ -6,7 +6,7 @@ export interface AssetApi {
    *
    * @throws NO_ACCOUNT
    */
-  getDefaultAccount(): Promise<string>;
+  getAccount(): Promise<string>;
 
   /**
    * Initiates a transfer of amount asset from user account to recipient account.

@@ -3,8 +3,8 @@ import { Asset } from '../api/types';
 import { call } from './proxy';
 
 export const assetApi: AssetApi = {
-  getDefaultAccount() {
-    return call<string>('asset.getDefaultAccount');
+  getAccount() {
+    return call<string>('asset.getAccount');
   },
 
   makeTransfer(recipient: string, asset: Asset, amount: number) {
