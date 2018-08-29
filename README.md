@@ -2,7 +2,7 @@
 
 API for dApps on Ontology blockchain. An implementation of dAPI from [OEP-6](https://github.com/backslash47/OEPs/blob/oep-dapp-api/OEP-6/OEP-6.mediawiki) communication protocol.
 
-It is necessary to have installed suitable **dAPI provider** . Reference implementation is [Cyano Wallet](https://github.com/OntologyCommunityDevelopers/cyano-wallet)
+It is necessary to have installed suitable **dAPI provider** . Reference implementation is [Cyano Wallet](https://github.com/OntologyCommunityDevelopers/cyano-wallet).
 
 
 ## How to use 
