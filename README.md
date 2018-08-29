@@ -1,11 +1,12 @@
 # dAPI.js
 
-API for dApps on Ontology blockchain. It is an implementation of [OEP-6](https://github.com/backslash47/OEPs/blob/oep-dapp-api/OEP-6/OEP-6.mediawiki) communication protocol.
+API for dApps on Ontology blockchain. An implementation of dAPI from [OEP-6](https://github.com/backslash47/OEPs/blob/oep-dapp-api/OEP-6/OEP-6.mediawiki) communication protocol.
 
+It is necessary to have installed suitable **dAPI provider** . Reference implementation is [Cyano Wallet](https://github.com/OntologyCommunityDevelopers/cyano-wallet)
 
 
 ## How to use 
-dAPI.js can be used as CommonJS/ES6 module or directly referencing in web page html.
+dAPI.js can be used as CommonJS/ES6 module or directly referencing in web page html. 
 
 ### Import CommonJS
 ```
@@ -40,7 +41,6 @@ client.registerClient({});
 ## Usage
 
 Examples of usage can be found in [EXAMPLES.md](EXAMPLES.md) or in a [demo app](https://github.com/OntologyCommunityDevelopers/ontology-dapi-demo)
-
 
 # Documentation
 
