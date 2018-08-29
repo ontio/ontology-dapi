@@ -32,7 +32,7 @@ module.exports = [
       path: path.resolve(__dirname, 'lib'),
       filename: 'browser.js',
       libraryTarget: 'var',
-      library: 'Ont' // This is the var name in browser
+      library: 'dApi' // This is the var name in browser
     },
     node: {
       fs: 'empty',
