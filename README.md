@@ -77,7 +77,7 @@ npm install
 ```
 
 #### Development build
-This will build the extension with minimum polyfilling for better debug experience.
+This will build the project with minimum polyfilling for better debug experience.
 
 ````
 npm run build:dev
