@@ -1,4 +1,4 @@
-# dAPI.js
+# ontology-dapi
 
 API for dApps on Ontology blockchain. This is an implementation of dAPI from [OEP-6](https://github.com/backslash47/OEPs/blob/oep-dapp-api/OEP-6/OEP-6.mediawiki) communication protocol.
 
@@ -7,7 +7,7 @@ It is necessary to have installed suitable **dAPI provider** . Reference impleme
 The library is written in TypeScript, so all the methods and objects are typed. It is therefore usable in TypeScript projects as well as vanilla JavaScript projects.
 
 ## How to use 
-dAPI.js can be used as CommonJS/ES6 module or directly referencing in web page html. 
+ontology-dapi can be used as CommonJS/ES6 module or directly referencing in web page html. 
 
 ### Install CommonJS/ES module
 ```
@@ -36,7 +36,7 @@ var client = dApi.client;
 ```
 
 ### Initialisation
-dApp needs to register itself as a client with the dAPI.js library to enable the communication.
+dApp needs to register itself as a client with the ontology-dapi library to enable the communication.
 
 ```
 import { client } from 'ontology-dapi';
