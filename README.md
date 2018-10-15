@@ -9,7 +9,7 @@ API for dApps on Ontology blockchain. This is an implementation of dAPI from [OE
 It is necessary to have installed suitable **dAPI provider** . Reference implementation is [Cyano Wallet](https://github.com/OntologyCommunityDevelopers/cyano-wallet).
 
 The library is written in TypeScript, so all the methods and objects are typed. It is therefore usable in TypeScript projects as well as vanilla JavaScript projects.
-A
+
 ## How to use 
 ontology-dapi can be used as CommonJS/ES6 module or directly referencing in web page html. 
 
