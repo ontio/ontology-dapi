@@ -1,6 +1,6 @@
 {
   "name": "ontology-dapi",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
@@ -51,8 +51,8 @@
     "tslint-eslint-rules": "^5.3.1",
     "tslint-no-circular-imports": "^0.4.0",
     "typescript": "^2.9.1",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.4",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
