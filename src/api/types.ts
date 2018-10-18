@@ -42,7 +42,7 @@ export interface Block {
   Transactions: Transaction[];
 }
 
-export interface Signature {
+export interface TxSignature {
   PubKeys: string[];
   M: number;
   SigData: string[];
@@ -57,7 +57,7 @@ export interface Transaction {
   TxType: TransactionType;
   Payload: any;
   Attributes: any[];
-  Sigs: Signature[];
+  Sigs: TxSignature[];
   Hash: string;
   Height: number;
 }
