@@ -72,8 +72,10 @@ export interface MerkleProof {
 }
 
 export interface Balance {
-  ont: number;
-  ong: number;
+  ONT: string;
+  ONG: string;
+
+  [key: string]: string;
 }
 
 export interface OntIdAttribute {
