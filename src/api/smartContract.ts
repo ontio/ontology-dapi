@@ -5,25 +5,25 @@ export interface SmartContractApi {
    * Initiates a method call to a smart contract with supplied parameters.
    * Addresses can specify additional accounts or identites whose signature will be required.
    *
-   * @param contract Hex address of contract
-   * @param method Method name
-   * @param parameters Method parameters
+   * @param scriptHash Hex address of contract
+   * @param operation Method name
+   * @param args Method parameters
    * @param gasPrice Suggested price of gas
    * @param gasLimit Suggested limit of gas
    * @param requireIdentity Is signature by identity required ?
    * @throws NO_ACCOUNT, MALFORMED_CONTRACT
    */
   invoke({
-    contract,
-    method,
-    parameters,
+    scriptHash,
+    operation,
+    args,
     gasPrice,
     gasLimit,
     requireIdentity
   }: {
-    contract: string;
-    method: string;
-    parameters?: Parameter[];
+    scriptHash: string;
+    operation: string;
+    args?: Parameter[];
     gasPrice?: number;
     gasLimit?: number;
     requireIdentity?: boolean;
@@ -32,19 +32,19 @@ export interface SmartContractApi {
   /**
    * Initiates a method call to a smart contract with supplied parameters in read only mode (preExec).
    *
-   * @param contract Hex address of contract
-   * @param method Method name
-   * @param parameters Method parameters
+   * @param scriptHash Hex address of contract
+   * @param operation Method name
+   * @param args Method parameters
    * @throws MALFORMED_CONTRACT
    */
   invokeRead({
-    contract,
-    method,
-    parameters
+    scriptHash,
+    operation,
+    args
   }: {
-    contract: string;
-    method: string;
-    parameters?: Parameter[];
+    scriptHash: string;
+    operation: string;
+    args?: Parameter[];
   }): Promise<any>;
 
   /**

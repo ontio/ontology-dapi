@@ -1,6 +1,6 @@
 export type NetworkType = 'MAIN' | 'TEST' | 'PRIVATE';
 
-export type Asset = 'ONT' | 'ONG';
+export type Asset = 'ONT' | 'ONG' | string;
 
 export enum TransactionType {
   BookKeeper = 2,

@@ -42,7 +42,7 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   }
 
   checkedRegister('asset.getAccount', provider.asset.getAccount);
-  checkedRegister('asset.makeTransfer', provider.asset.makeTransfer);
+  checkedRegister('asset.send', provider.asset.send);
 
   checkedRegister('identity.getIdentity', provider.identity.getIdentity);
   checkedRegister('identity.getDDO', provider.identity.getDDO);
