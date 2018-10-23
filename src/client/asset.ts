@@ -6,7 +6,7 @@ export const assetApi: AssetApi = {
     return call<string>('asset.getAccount');
   },
 
-  makeTransfer(args) {
-    return call<string>('asset.makeTransfer', args);
+  send(args) {
+    return call<string>('asset.send', args);
   }
 };

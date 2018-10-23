@@ -1,6 +1,6 @@
 export type NetworkType = 'MAIN' | 'TEST' | 'PRIVATE';
 
-export type Asset = 'ONT' | 'ONG';
+export type Asset = 'ONT' | 'ONG' | string;
 
 export enum TransactionType {
   BookKeeper = 2,
@@ -72,8 +72,10 @@ export interface MerkleProof {
 }
 
 export interface Balance {
-  ont: number;
-  ong: number;
+  ONT: string;
+  ONG: string;
+
+  [key: string]: string;
 }
 
 export interface OntIdAttribute {

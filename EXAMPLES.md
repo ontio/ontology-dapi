@@ -23,32 +23,32 @@ const result = await client.api.provider.getProvider();
 
 ### Initialise a transfer
 ```
-const recipient = 'AXCyYV4DNmmsqZn9qJEqHqpacVxcr7X7ns';
+const to = 'AXCyYV4DNmmsqZn9qJEqHqpacVxcr7X7ns';
 const asset = 'ONT';
 const amount = 1000;
-const result = await client.api.asset.makeTransfer({ recipient, asset, amount });
+const result = await client.api.asset.send({ to, asset, amount });
 ```
 
 ### Initialise Smart contract call
 ```
 import { client, Parameter } from 'ontology-dapi';
 
-const contract = 'fe7a542bd4f1ae71d42c4b15480fb2f421c7631b';
-const method = 'Add';
-const parameters: Parameter[] = [{ type: 'Integer', value: 5 }, { type: 'Integer', value: 4 }];
+const scriptHash = 'fe7a542bd4f1ae71d42c4b15480fb2f421c7631b';
+const operation = 'Add';
+const args: Parameter[] = [{ type: 'Integer', value: 5 }, { type: 'Integer', value: 4 }];
 const gasPrice = 500;
 const gasLimit = 30000;
     
-const result = await client.api.smartContract.invoke({ contract, method, parameters, gasPrice, gasLimit });
+const result = await client.api.smartContract.invoke({ scriptHash, operation, args, gasPrice, gasLimit });
 ```
 
 ### Initialise Readonly Smart contract call
 ```
 import { client, Parameter } from 'ontology-dapi';
 
-const contract = 'fe7a542bd4f1ae71d42c4b15480fb2f421c7631b';
-const method = 'Add';
-const parameters: Parameter[] = [{ type: 'Integer', value: 5 }, { type: 'Integer', value: 4 }];
+const scriptHash = 'fe7a542bd4f1ae71d42c4b15480fb2f421c7631b';
+const operation = 'Add';
+const args: Parameter[] = [{ type: 'Integer', value: 5 }, { type: 'Integer', value: 4 }];
     
-const result = await client.api.smartContract.invokeRead({ contract, method, parameters });
+const result = await client.api.smartContract.invokeRead({ scriptHash, operation, args });
 ```
