@@ -9,6 +9,13 @@ export interface AssetApi {
   getAccount(): Promise<string>;
 
   /**
+   * Returns currently selected public key of logged in user.
+   *
+   * @throws NO_ACCOUNT
+   */
+  getPublicKey(): Promise<string>;
+
+  /**
    * Initiates a transfer of amount asset from user account to recipient account.
    *
    * @param to Recipient of the transfer
