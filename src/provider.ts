@@ -42,6 +42,7 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   }
 
   checkedRegister('asset.getAccount', provider.asset.getAccount);
+  checkedRegister('asset.getPublicKey', provider.asset.getPublicKey);
   checkedRegister('asset.send', provider.asset.send);
 
   checkedRegister('identity.getIdentity', provider.identity.getIdentity);

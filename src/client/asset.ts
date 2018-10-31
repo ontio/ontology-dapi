@@ -6,6 +6,10 @@ export const assetApi: AssetApi = {
     return call<string>('asset.getAccount');
   },
 
+  getPublicKey() {
+    return call<string>('asset.getPublicKey');
+  },
+
   send(args) {
     return call<string>('asset.send', args);
   }
