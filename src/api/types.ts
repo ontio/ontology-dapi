@@ -110,3 +110,24 @@ export interface Signature {
   publicKey: string;
   data: string;
 }
+
+export interface Contract {
+  Code: string;
+  NeedStorage: boolean;
+  Name: string;
+  CodeVersion: string;
+  Author: string;
+  Email: string;
+  Description: string;
+}
+
+export interface BlockWithTxList {
+  Hash: string;
+  Height: number;
+  Transactions: string[];
+}
+
+export interface GasPrice {
+  gasPrice: number;
+  height: number;
+}
