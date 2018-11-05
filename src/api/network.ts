@@ -19,4 +19,17 @@ export interface NetworkApi {
   getNetwork(): Promise<Network>;
   getBalance({ address }: { address: string }): Promise<Balance>;
   isConnected(): Promise<boolean>;
+
+  getUnboundOng(): Promise<string>;
+  getContract({ hash }: { hash: string }): Promise<string>;
+  getSmartCodeEvent({ value }: { value: string | number }): Promise<any>;
+  getBlockHeightByTxHash({ hash }: { hash: string }): Promise<number>;
+
+  getBlockHash({ height }: { height: number }): Promise<string>;
+  getBlockTxsByHeight({ height }: { height: number }): Promise<string[]>;
+  getGasPrice(): Promise<string>;
+  getGrantOng({ address }: { address: string }): Promise<string>;
+  getMempoolTxCount(): Promise<number>;
+  getMempoolTxState({ hash }: { hash: string }): Promise<any>;
+  getVersion(): Promise<string>;
 }

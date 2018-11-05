@@ -66,6 +66,18 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   checkedRegister('network.getTransaction', provider.network.getTransaction);
   checkedRegister('network.isConnected', provider.network.isConnected);
 
+  checkedRegister('network.getUnboundOng', provider.network.getUnboundOng);
+  checkedRegister('network.getContract', provider.network.getContract);
+  checkedRegister('network.getSmartCodeEvent', provider.network.getSmartCodeEvent);
+  checkedRegister('network.getBlockHeightByTxHash', provider.network.getBlockHeightByTxHash);
+  checkedRegister('network.getBlockHash', provider.network.getBlockHash);
+  checkedRegister('network.getBlockTxsByHeight', provider.network.getBlockTxsByHeight);
+  checkedRegister('network.getGasPrice', provider.network.getGasPrice);
+  checkedRegister('network.getGrantOng', provider.network.getGrantOng);
+  checkedRegister('network.getMempoolTxCount', provider.network.getMempoolTxCount);
+  checkedRegister('network.getMempoolTxState', provider.network.getMempoolTxState);
+  checkedRegister('network.getVersion', provider.network.getVersion);
+
   checkedRegister('smartContract.invoke', provider.smartContract.invoke);
   checkedRegister('smartContract.invokeRead', provider.smartContract.invokeRead);
   checkedRegister('smartContract.deploy', provider.smartContract.deploy);

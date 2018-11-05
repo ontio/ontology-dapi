@@ -41,5 +41,40 @@ export const networkApi: NetworkApi = {
 
   isConnected() {
     return call<boolean>('network.isConnected');
+  },
+
+  getUnboundOng() {
+    return call<string>('network.getUnboundOng');
+  },
+  getContract(args) {
+    return call<string>('network.getContract', args);
+  },
+  getSmartCodeEvent(args) {
+    return call<any>('network.getSmartCodeEvent', args);
+  },
+  getBlockHeightByTxHash(args) {
+    return call<number>('network.getBlockHeightByTxHash', args);
+  },
+
+  getBlockHash(args) {
+    return call<string>('network.getBlockHash', args);
+  },
+  getBlockTxsByHeight(args) {
+    return call<string[]>('network.getBlockTxsByHeight', args);
+  },
+  getGasPrice() {
+    return call<string>('network.getGasPrice');
+  },
+  getGrantOng(args) {
+    return call<string>('network.getGrantOng', args);
+  },
+  getMempoolTxCount() {
+    return call<number>('network.getMempoolTxCount');
+  },
+  getMempoolTxState(args) {
+    return call<any>('network.getMempoolTxState', args);
+  },
+  getVersion() {
+    return call<string>('network.getVersion');
   }
 };
