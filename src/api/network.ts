@@ -20,7 +20,7 @@ export interface NetworkApi {
   getBalance({ address }: { address: string }): Promise<Balance>;
   isConnected(): Promise<boolean>;
 
-  getUnboundOng(): Promise<string>;
+  getUnboundOng({ address }: { address: string }): Promise<string>;
   getContract({ hash }: { hash: string }): Promise<string>;
   getSmartCodeEvent({ value }: { value: string | number }): Promise<any>;
   getBlockHeightByTxHash({ hash }: { hash: string }): Promise<number>;

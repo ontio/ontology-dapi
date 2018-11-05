@@ -43,8 +43,8 @@ export const networkApi: NetworkApi = {
     return call<boolean>('network.isConnected');
   },
 
-  getUnboundOng() {
-    return call<string>('network.getUnboundOng');
+  getUnboundOng(args) {
+    return call<string>('network.getUnboundOng', args);
   },
   getContract(args) {
     return call<string>('network.getContract', args);
