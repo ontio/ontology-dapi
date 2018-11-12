@@ -4,7 +4,7 @@
 
 # ontology-dapi
 
-基于Ontology blockchain开发dApp的轻量级去中心化API。是根据OEP-6实现的dAPI ，[OEP-6](https://github.com/backslash47/OEPs/blob/oep-dapp-api/OEP-6/OEP-6.mediawiki) communication protocol.
+DAPI是基于Ontology blockchain开发dApp的轻量级去中心化API。是根据OEP-6实现的dAPI ，[OEP-6](https://github.com/backslash47/OEPs/blob/oep-dapp-api/OEP-6/OEP-6.mediawiki) communication protocol.
 
 使用前请先安装 **dAPI provider** . 比如 [Cyano Wallet](https://github.com/OntologyCommunityDevelopers/cyano-wallet).
 
