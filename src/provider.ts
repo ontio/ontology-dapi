@@ -21,7 +21,7 @@ export function registerContentProxy({
 
   windowPostMessageProxy.addHandler({
     handle: (msg) => browser.runtime.sendMessage(msg),
-    test: (msg) => msg.type === 'dAPI.js'
+    test: (msg) => msg.type === 'dAPI.js' && msg.source === 'page'
   });
 }
 
