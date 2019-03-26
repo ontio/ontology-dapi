@@ -1,6 +1,13 @@
-import * as base58 from 'bs58';
+import * as baseX from 'base-x';
 import * as cryptoJS from 'crypto-js';
+
+/* eslint-disable global-require */
+const typedarrayToBuffer = require('typedarray-to-buffer');
+/* eslint-enable global-require */
+
 import { UtilsApi } from '../api/utils';
+
+const base58 = baseX('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz');
 
 export const utilsApi: UtilsApi = {
   strToHex(str: string) {
@@ -50,7 +57,9 @@ function hexToBase58(hexEncoded: string): string {
 
   const datas = data + checksum;
 
-  return base58.encode(hexstring2ab(datas));
+  const buffer = typedarrayToBuffer(new Uint8Array(hexstring2ab(datas)));
+
+  return base58.encode(buffer);
 }
 
 function sha256(data: string) {
