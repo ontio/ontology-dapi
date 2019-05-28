@@ -4,6 +4,7 @@ import { MessageApi } from './message';
 import { NetworkApi } from './network';
 import { ProviderApi } from './provider';
 import { SmartContractApi } from './smartContract';
+import { StateChannelApi } from './stateChannel';
 import { UtilsApi } from './utils';
 
 export * from './types';
@@ -22,4 +23,5 @@ export interface DApi {
   provider: ProviderApi;
   smartContract: SmartContractApi;
   utils: UtilsApi;
+  stateChannel: StateChannelApi;
 }

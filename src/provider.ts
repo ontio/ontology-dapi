@@ -83,4 +83,6 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   checkedRegister('smartContract.deploy', provider.smartContract.deploy);
 
   checkedRegister('provider.getProvider', provider.provider.getProvider);
+
+  checkedRegister('stateChannel.sign', provider.stateChannel.sign);
 }
