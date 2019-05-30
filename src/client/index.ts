@@ -6,6 +6,7 @@ import { networkApi as network } from './network';
 import { providerApi as provider } from './provider';
 import { registerClient } from './proxy';
 import { smartContractApi as smartContract } from './smartContract';
+import { stateChannelApi as stateChannel } from './stateChannel';
 import { utilsApi as utils } from './utils';
 
 const api: DApi = {
@@ -15,6 +16,7 @@ const api: DApi = {
   network,
   provider,
   smartContract,
+  stateChannel,
   utils
 };
 
