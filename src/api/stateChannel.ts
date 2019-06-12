@@ -1,10 +1,10 @@
-import { Response } from './types';
+import { Signature } from './types';
 
 export interface StateChannelApi {
 
   login(
     password: string
-  ): Promise<Response>;
+  ): Promise<string>;
 
   sign({
         channelId,
@@ -14,5 +14,5 @@ export interface StateChannelApi {
       channelId: string,
       scriptHash: string,
       message: string
-    }): Promise<Response>;
+    }): Promise<Signature>;
 }
