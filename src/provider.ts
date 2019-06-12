@@ -84,5 +84,6 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
 
   checkedRegister('provider.getProvider', provider.provider.getProvider);
 
+  checkedRegister('stateChannel.login', provider.stateChannel.login);
   checkedRegister('stateChannel.sign', provider.stateChannel.sign);
 }
