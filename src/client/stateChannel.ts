@@ -3,8 +3,8 @@ import { Signature } from '../api/types';
 import { call } from './proxy';
 
 export const stateChannelApi: StateChannelApi = {
-  login(password) {
-    return call<string>('stateChannel.login', password);
+  login() {
+    return call<string>('stateChannel.login');
   },
 
   sign(args) {

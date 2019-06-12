@@ -2,9 +2,7 @@ import { Signature } from './types';
 
 export interface StateChannelApi {
 
-  login(
-    password: string
-  ): Promise<string>;
+  login(): Promise<string>;
 
   sign({
         channelId,
