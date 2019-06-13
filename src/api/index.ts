@@ -14,6 +14,8 @@ export { MessageApi } from './message';
 export { NetworkApi } from './network';
 export { ProviderApi } from './provider';
 export { SmartContractApi } from './smartContract';
+export { StateChannelApi } from './stateChannel';
+export { UtilsApi } from './utils';
 
 export interface DApi {
   asset: AssetApi;
