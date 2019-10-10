@@ -13,5 +13,12 @@ export const smartContractApi: SmartContractApi = {
 
   deploy(args): Promise<void> {
     return call<void>('smartContract.deploy', args);
+  },
+  invokeWasm(args) {
+    return call<Response>('smartContract.invokeWasm', args);
+  },
+
+  invokeWasmRead(args): Promise<any> {
+    return call<void>('smartContract.invokeWasmRead', args);
   }
 };

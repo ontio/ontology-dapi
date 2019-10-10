@@ -1,4 +1,4 @@
-import { Parameter, Response } from './types';
+import { Parameter, Response, VmType } from './types';
 
 export interface SmartContractApi {
   /**
@@ -57,7 +57,8 @@ export interface SmartContractApi {
    * @param author Author
    * @param email Email
    * @param description Description
-   * @param needStorage Does the smart contract need storage?
+   * @deprecated @param needStorage Does the smart contract need storage?
+   * @param vmType Vm type; The boolean type is for compatibility. It stands for NEO vm smart contract.
    * @param gasPrice Suggested price of gas
    * @param gasLimit Suggested limit of gas
    * @throws NO_ACCOUNT
@@ -69,7 +70,7 @@ export interface SmartContractApi {
     author,
     email,
     description,
-    needStorage,
+    vmType,
     gasPrice,
     gasLimit
   }: {
@@ -79,8 +80,55 @@ export interface SmartContractApi {
     author?: string;
     email?: string;
     description?: string;
-    needStorage?: boolean;
+    vmType?: boolean | VmType;
     gasPrice?: number;
     gasLimit?: number;
   }): Promise<void>;
+
+ /**
+  * Initiates a method call to a WASM smart contract with supplied parameters.
+  * Addresses can specify additional accounts or identites whose signature will be required.
+  *
+  * @param scriptHash Hex address of contract
+  * @param operation Method name
+  * @param args Method parameters
+  * @param gasPrice Suggested price of gas
+  * @param gasLimit Suggested limit of gas
+  * @param requireIdentity Is signature by identity required ?
+  * @throws NO_ACCOUNT, MALFORMED_CONTRACT
+  */
+  invokeWasm({
+    scriptHash,
+    operation,
+    args,
+    gasPrice,
+    gasLimit,
+    requireIdentity
+  }: {
+    scriptHash: string;
+    operation: string;
+    args?: Parameter[];
+    gasPrice?: number;
+    gasLimit?: number;
+    requireIdentity?: boolean;
+  }): Promise<Response>;
+
+  /**
+   * Initiates a method call to a WASM smart contract with supplied parameters in read only mode (preExec).
+   *
+   * @param scriptHash Hex address of contract
+   * @param operation Method name
+   * @param args Method parameters
+   * @throws MALFORMED_CONTRACT
+   */
+  invokeWasmRead({
+    scriptHash,
+    operation,
+    args
+  }: {
+    scriptHash: string;
+    operation: string;
+    args?: Parameter[];
+  }): Promise<any>;
+
 }

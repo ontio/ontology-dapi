@@ -11,6 +11,11 @@ export enum TransactionType {
   Vote = 5
 }
 
+export enum VmType  {
+    NEOVM_TYPE = 1,
+    WASMVM_TYPE = 3
+}
+
 export type EventListener = (data: any) => void;
 
 export type ParameterType = 'Boolean' | 'Integer' | 'ByteArray' | 'Struct' | 'Map' | 'String' | 'Array';
@@ -131,3 +136,4 @@ export interface GasPrice {
   gasPrice: number;
   height: number;
 }
+
