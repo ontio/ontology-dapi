@@ -18,7 +18,7 @@ export enum VmType  {
 
 export type EventListener = (data: any) => void;
 
-export type ParameterType = 'Boolean' | 'Integer' | 'ByteArray' | 'Struct' | 'Map' | 'String' | 'Array';
+export type ParameterType = 'Boolean' | 'Integer' | 'ByteArray' | 'Struct' | 'Map' | 'String' | 'Array' | 'Address';
 
 export interface Parameter {
   type: ParameterType;
