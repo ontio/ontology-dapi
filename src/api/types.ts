@@ -18,7 +18,8 @@ export enum VmType  {
 
 export type EventListener = (data: any) => void;
 
-export type ParameterType = 'Boolean' | 'Integer' | 'ByteArray' | 'Struct' | 'Map' | 'String' | 'Array' | 'Address';
+// tslint:disable-next-line:max-line-length
+export type ParameterType = 'Boolean' | 'Integer' | 'ByteArray' | 'Struct' | 'Map' | 'String' | 'Array' | 'Address' | 'Long';
 
 export interface Parameter {
   type: ParameterType;
