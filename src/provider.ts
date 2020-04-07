@@ -81,6 +81,8 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   checkedRegister('smartContract.invoke', provider.smartContract.invoke);
   checkedRegister('smartContract.invokeRead', provider.smartContract.invokeRead);
   checkedRegister('smartContract.deploy', provider.smartContract.deploy);
+  checkedRegister('smartContract.invokeWasm', provider.smartContract.invokeWasm);
+  checkedRegister('smartContract.invokeWasmRead', provider.smartContract.invokeWasmRead);
 
   checkedRegister('provider.getProvider', provider.provider.getProvider);
 
