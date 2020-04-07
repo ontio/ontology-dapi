@@ -1,5 +1,6 @@
 import { DApi } from '../api';
 import { assetApi as asset } from './asset';
+import { fsApi as fs } from './fs';
 import { identityApi as identity } from './identity';
 import { messageApi as message } from './message';
 import { networkApi as network } from './network';
@@ -17,7 +18,8 @@ const api: DApi = {
   provider,
   smartContract,
   stateChannel,
-  utils
+  utils,
+  fs
 };
 
 export { registerClient, api };

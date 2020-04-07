@@ -138,3 +138,137 @@ export interface GasPrice {
   height: number;
 }
 
+export interface FsNodeInfo {
+  pledge: number;
+  profit: number;
+  volume: number;
+  restVol: number;
+  serviceTime: number;
+  minPdpInterval: number;
+  nodeAddr: string;
+  nodeNetAddr: string;
+}
+
+export interface FsNodeInfoList {
+  nodesInfo: FsNodeInfo[];
+}
+
+export interface ReadPlan {
+  nodeAddr: string;
+  maxReadBlockNum: number;
+  haveReadBlockNum: number;
+}
+
+export interface ReadPledge {
+  fileHash: string;
+  downloader: string;
+  blockHeight: number;
+  expireHeight: number;
+  restMoney: number;
+  readPlans: ReadPlan[];
+}
+
+export interface FileReadSettleSlice {
+  fileHash: string;
+  payFrom: string;
+  payTo: string;
+  sliceId: number;
+  pledgeHeight: number;
+  signature: string;
+  publicKey: string;
+}
+
+export interface PdpRecord {
+  nodeAddr: string;
+  fileHash: string;
+  fileOwner: string;
+  pdpCount: number;
+  lastPdpTime: number;
+  nextHeight: number;
+  settleFlag: boolean;
+}
+
+export interface PdpRecordList {
+  pdpRecords: PdpRecord[];
+}
+
+export interface Challenge {
+  fileHash: string;
+  fileOwner: string;
+  nodeAddr: string;
+  challengeHeight: number;
+  reward: number;
+  expiredTime: number;
+  state: number;
+}
+
+export interface ChallengeList {
+  challenges: Challenge[];
+}
+
+export interface Space {
+  spaceOwner: string;
+  volume: number;
+  restVol: number;
+  copyNumber: number;
+  payAmount: number;
+  restAmount: number;
+  pdpInterval: number;
+  timeStart: number;
+  timeExpired: number;
+  validFlag: boolean;
+}
+
+export interface FileHash {
+  fHash: string;
+}
+
+export interface FileHashList {
+  filesH: FileHash[];
+}
+
+export interface FileInfo {
+  fileHash: string;
+  fileOwner: string;
+  fileDesc: string;
+  fileBlockCount: number;
+  realFileSize: number;
+  copyNumber: number;
+  payAmount: number;
+  restAmount: number;
+  fileCost: number;
+  firstPdp: boolean;
+  pdpInterval: number;
+  timeStart: number;
+  timeExpired: number;
+  pdpParam: string;
+  validFlag: boolean;
+  storageType: number;
+}
+
+export interface FileInfoList {
+  filesI: FileInfo[];
+}
+
+export interface FileStore {
+  fileHash: string;
+  fileDesc: string;
+  fileBlockCount: number;
+  realFileSize: number;
+  copyNumber: number;
+  firstPdp: boolean;
+  PdpInterval: number;
+  timeExpired: number;
+  pdpParam: string;
+  storageType: number;
+}
+
+export interface FileRenew {
+  fileHash: string;
+  renewTime: number;
+}
+
+export interface FileTransfer {
+  fileHash: string;
+  newOwner: string;
+}
