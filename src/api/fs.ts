@@ -3,7 +3,6 @@ import {
     ChallengeList,
     FileHashList,
     FileInfo,
-    FileReadSettleSlice,
     FileRenew,
     FileStore,
     FileTransfer,
@@ -12,27 +11,27 @@ import {
     PdpRecordList,
     ReadPlan,
     ReadPledge,
-    Space
+    Space,
 } from './types';
 
 export interface FsAPI {
-  node: FsNodeAPI;
+  // node: FsNodeAPI;
   space: FsSpaceAPI;
-  getFileReadPledge({filehash, downloader}: {filehash: string, downloader: string}): Promise<ReadPledge>;
-  fileReadProfitSettle({fileReadSettleSlice}: {fileReadSettleSlice: FileReadSettleSlice}): Promise<string>;
-  verifyFileReadSettleSlice({settleSlice}: {settleSlice: FileReadSettleSlice}): Promise<boolean>;
+  getFileReadPledge({fileHash, downloader}: {fileHash: string, downloader: string}): Promise<ReadPledge>;
+  // fileReadProfitSettle({fileReadSettleSlice}: {fileReadSettleSlice: FileReadSettleSlice}): Promise<string>;
+  // verifyFileReadSettleSlice({settleSlice}: {settleSlice: FileReadSettleSlice}): Promise<boolean>;
   getFilePdpRecordList({fileHash}: {fileHash: string}): Promise<PdpRecordList>;
   /**
    * This api is actually the same with node.query, except that this is for client side query.
    * @param nodeWallet string
    */
   getNodeInfo({nodeWallet}: {nodeWallet: string}): Promise<FsNodeInfo>;
-  GetNodeInfoList({count}: {count: number}): Promise<FsNodeInfoList>;
-  chanllenge({fileHash, nodeAdd}: {fileHash: string, nodeAdd: string}): Promise<string>;
-  getChallegen({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Challenge>;
-  response({fileHash, proveData, blockHeight}:
-    {fileHash: string, proveData: string, blockHeight: number}): Promise<string>;
-  judge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<string>;
+  getNodeInfoList({count}: {count: number}): Promise<FsNodeInfoList>;
+  chanllenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<string>;
+  getChallenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Challenge>;
+  // response({fileHash, proveData, blockHeight}:
+  //   {fileHash: string, proveData: string, blockHeight: number}): Promise<string>;
+  // judge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<string>;
   getFileChallengeList({fileHash}: {fileHash: string}): Promise<ChallengeList>;
   getNodeChallengeList(): Promise<ChallengeList>;
   getFileList(): Promise<FileHashList>;
@@ -43,11 +42,11 @@ export interface FsAPI {
   deleteFiles({fileHashes}: {fileHashes: string[]}): Promise<string>;
   fileReadPledge({fileHash, readPlans}: {fileHash: string, readPlans: ReadPlan[]}): Promise<string>;
   cancelFileRead({fileHash}: {fileHash: string}): Promise<string>;
-  genPassport({height, blockHash}: {height: number, blockHash: string}): Promise<string>;
-  genFileReadSettleSlice(
-      {fileHash, payTo, sliceId, pledgeHeight}: {fileHash: string, payTo: string, sliceId: number, pledgeHeight: number}
-  ): Promise<FileReadSettleSlice>;
-  pollForTxConfirmed({timeout, txHash}: {timeout: number, txHash: string}): Promise<boolean>;
+  // genPassport({height, blockHash}: {height: number, blockHash: string}): Promise<string>;
+  // genFileReadSettleSlice(
+  // tslint:disable-next-line: max-line-length
+  //     {fileHash, payTo, sliceId, pledgeHeight}: {fileHash: string, payTo: string, sliceId: number, pledgeHeight: number}
+  // ): Promise<FileReadSettleSlice>;
 }
 
 /**
