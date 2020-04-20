@@ -19,7 +19,7 @@ export interface FsAPI {
   node: FsNodeAPI;
   space: FsSpaceAPI;
   getFileReadPledge({fileHash, downloader}: {fileHash: string, downloader: string}): Promise<ReadPledge>;
-  fileReadProfitSettle({fileReadSettleSlice}: {fileReadSettleSlice: FileReadSettleSlice}): Promise<string>;
+  fileReadProfitSettle({fileReadSettleSlice}: {fileReadSettleSlice: FileReadSettleSlice}): Promise<Response>;
   verifyFileReadSettleSlice({settleSlice}: {settleSlice: FileReadSettleSlice}): Promise<boolean>;
   getFilePdpRecordList({fileHash}: {fileHash: string}): Promise<PdpRecordList>;
   /**
@@ -28,21 +28,21 @@ export interface FsAPI {
    */
   getNodeInfo({nodeWallet}: {nodeWallet: string}): Promise<FsNodeInfo>;
   getNodeInfoList({count}: {count: number}): Promise<FsNodeInfoList>;
-  chanllenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<string>;
+  chanllenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Response>;
   getChallenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Challenge>;
   response({fileHash, proveData, blockHeight}:
-    {fileHash: string, proveData: string, blockHeight: number}): Promise<string>;
-  judge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<string>;
+    {fileHash: string, proveData: string, blockHeight: number}): Promise<Response>;
+  judge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Response>;
   getFileChallengeList({fileHash}: {fileHash: string}): Promise<ChallengeList>;
   getNodeChallengeList(): Promise<ChallengeList>;
   getFileList(): Promise<FileHashList>;
   getFileInfo({fileHash}: {fileHash: string}): Promise<FileInfo>;
-  storeFiles({filesInfo}: {filesInfo: FileStore[]}): Promise<string>;
-  transferFiles({fileTransfers}: {fileTransfers: FileTransfer[]}): Promise<string>;
-  renewFiles({filesRenew}: {filesRenew: FileRenew[]}): Promise<string>;
-  deleteFiles({fileHashes}: {fileHashes: string[]}): Promise<string>;
-  fileReadPledge({fileHash, readPlans}: {fileHash: string, readPlans: ReadPlan[]}): Promise<string>;
-  cancelFileRead({fileHash}: {fileHash: string}): Promise<string>;
+  storeFiles({filesInfo}: {filesInfo: FileStore[]}): Promise<Response>;
+  transferFiles({fileTransfers}: {fileTransfers: FileTransfer[]}): Promise<Response>;
+  renewFiles({filesRenew}: {filesRenew: FileRenew[]}): Promise<Response>;
+  deleteFiles({fileHashes}: {fileHashes: string[]}): Promise<Response>;
+  fileReadPledge({fileHash, readPlans}: {fileHash: string, readPlans: ReadPlan[]}): Promise<Response>;
+  cancelFileRead({fileHash}: {fileHash: string}): Promise<Response>;
   // genPassport(): Promise<string>;
   genFileReadSettleSlice(
       {fileHash, payTo, sliceId, pledgeHeight}: {fileHash: string, payTo: string, sliceId: number, pledgeHeight: number}
@@ -56,25 +56,25 @@ export interface FsNodeAPI {
   register(
     {volume, minPdpInterval, serviceTime, nodeNetAddr}
     : {volume: number, serviceTime: number, minPdpInterval: number, nodeNetAddr: string}
-  ): Promise<string>;
+  ): Promise<Response>;
   query({nodeWallet}: {nodeWallet: string}): Promise<FsNodeInfo>;
   update(
     {volume, serviceTime, minPdpInterval, nodeNetAddr}
     : {volume: number, serviceTime: number, minPdpInterval: number, nodeNetAddr: string}
-  ): Promise<string>;
-  cancel(): Promise<string>;
-  drawProfit(): Promise<string>;
+  ): Promise<Response>;
+  cancel(): Promise<Response>;
+  drawProfit(): Promise<Response>;
   fileProve(
     {fileHash, proveData, blockHeight}: {fileHash: string, proveData: string, blockHeight: number}
-  ): Promise<string>;
+  ): Promise<Response>;
 }
 
 export interface FsSpaceAPI {
   create(
     {volume, copyNumber, pdpInterval, timeExpired}
     : {volume: number, copyNumber: number, pdpInterval: number, timeExpired: number}
-  ): Promise<string>;
+  ): Promise<Response>;
   get(): Promise<Space>;
-  update({volume, timeExpired}: {volume: number, timeExpired: number}): Promise<string>;
-  delete(): Promise<string>;
+  update({volume, timeExpired}: {volume: number, timeExpired: number}): Promise<Response>;
+  delete(): Promise<Response>;
 }

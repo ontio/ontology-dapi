@@ -10,6 +10,7 @@ import { UtilsApi } from './utils';
 
 export * from './types';
 export { AssetApi } from './asset';
+export { FsAPI, FsNodeAPI, FsSpaceAPI } from './fs';
 export { IdentityApi } from './identity';
 export { MessageApi } from './message';
 export { NetworkApi } from './network';

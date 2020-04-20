@@ -5,37 +5,37 @@ import { call } from './proxy';
 
 const space: FsSpaceAPI = {
   create(args) {
-    return call<string>('fs.space.create', args);
+    return call<Response>('fs.space.create', args);
   },
   get() {
     return call<Space>('fs.space.get');
   },
   update(args) {
-    return call<string>('fs.space.update', args);
+    return call<Response>('fs.space.update', args);
   },
   delete() {
-    return call<string>('fs.space.delete');
+    return call<Response>('fs.space.delete');
   }
 };
 
 const node: FsNodeAPI = {
   register(args) {
-    return call<string>('fs.node.register', args);
+    return call<Response>('fs.node.register', args);
   },
   query(args) {
     return call<FsNodeInfo>('fs.node.query', args);
   },
   update(args) {
-    return call<string>('fs.node.update', args);
+    return call<Response>('fs.node.update', args);
   },
   cancel() {
-    return call<string>('fs.node.cancel');
+    return call<Response>('fs.node.cancel');
   },
   drawProfit() {
-    return call<string>('fs.node.drawProfit');
+    return call<Response>('fs.node.drawProfit');
   },
   fileProve(args) {
-    return call<string>('fs.node.fileProve', args);
+    return call<Response>('fs.node.fileProve', args);
   }
 };
 
@@ -46,7 +46,7 @@ export const fsApi: FsAPI = {
     return call<ReadPledge>('fs.getFileReadPledge', args);
   },
   fileReadProfitSettle(args) {
-    return call<string>('fs.fileReadProfitSettle', args);
+    return call<Response>('fs.fileReadProfitSettle', args);
   },
   verifyFileReadSettleSlice(args) {
     return call<boolean>('fs.verifyFileReadSettleSlice', args);
@@ -54,10 +54,6 @@ export const fsApi: FsAPI = {
   getFilePdpRecordList(args) {
     return call<PdpRecordList>('fs.getFilePdpRecordList', args);
   },
-  /**
-   * This api is actually the same with node.query, except that this is for client side query.
-   * @param nodeWallet string
-   */
   getNodeInfo(args) {
     return call<FsNodeInfo>('fs.getNodeInfo', args);
   },
@@ -65,16 +61,16 @@ export const fsApi: FsAPI = {
     return call<FsNodeInfoList>('fs.GetNodeInfoList', args);
   },
   chanllenge(args) {
-    return call<string>('fs.chanllenge', args);
+    return call<Response>('fs.chanllenge', args);
   },
   getChallenge(args) {
     return call<Challenge>('fs.getChallenge', args);
   },
   response(args) {
-    return call<string>('fs.response', args);
+    return call<Response>('fs.response', args);
   },
   judge(args) {
-    return call<string>('fs.judge', args);
+    return call<Response>('fs.judge', args);
   },
   getFileChallengeList(args) {
     return call<ChallengeList>('fs.getFileChallengeList', args);
@@ -89,25 +85,25 @@ export const fsApi: FsAPI = {
     return call<FileInfo>('fs.getFileInfo', args);
   },
   storeFiles(args) {
-    return call<string>('fs.storeFiles', args);
+    return call<Response>('fs.storeFiles', args);
   },
   transferFiles(args) {
-    return call<string>('fs.transferFiles', args);
+    return call<Response>('fs.transferFiles', args);
   },
   renewFiles(args) {
-    return call<string>('fs.renewFiles', args);
+    return call<Response>('fs.renewFiles', args);
   },
   deleteFiles(args) {
-    return call<string>('fs.deleteFiles', args);
+    return call<Response>('fs.deleteFiles', args);
   },
   fileReadPledge(args) {
-    return call<string>('fs.fileReadPledge', args);
+    return call<Response>('fs.fileReadPledge', args);
   },
   cancelFileRead(args) {
-    return call<string>('fs.cancelFileRead', args);
+    return call<Response>('fs.cancelFileRead', args);
   },
   // genPassport() {
-  //   return call<string>('fs.genPassport');
+  //   return call<Response>('fs.genPassport');
   // }
   genFileReadSettleSlice(args) {
     return call<FileReadSettleSlice>('fs.genFileReadSettleSlice', args);
