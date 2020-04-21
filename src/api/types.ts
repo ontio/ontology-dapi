@@ -143,7 +143,7 @@ export interface FsNodeInfo {
   profit: number;
   volume: number;
   restVol: number;
-  serviceTime: number;
+  serviceTime: Date;
   minPdpInterval: number;
   nodeAddr: string;
   nodeNetAddr: string;
@@ -183,7 +183,7 @@ export interface PdpRecord {
   fileHash: string;
   fileOwner: string;
   pdpCount: number;
-  lastPdpTime: number;
+  lastPdpTime: Date;
   nextHeight: number;
   settleFlag: boolean;
 }
@@ -198,7 +198,7 @@ export interface Challenge {
   nodeAddr: string;
   challengeHeight: number;
   reward: number;
-  expiredTime: number;
+  expiredTime: Date;
   state: number;
 }
 
@@ -214,8 +214,8 @@ export interface Space {
   payAmount: number;
   restAmount: number;
   pdpInterval: number;
-  timeStart: number;
-  timeExpired: number;
+  timeStart: Date;
+  timeExpired: Date;
   validFlag: boolean;
 }
 
@@ -239,8 +239,8 @@ export interface FileInfo {
   fileCost: number;
   firstPdp: boolean;
   pdpInterval: number;
-  timeStart: number;
-  timeExpired: number;
+  timeStart: Date;
+  timeExpired: Date;
   pdpParam: string;
   validFlag: boolean;
   storageType: number;
@@ -258,14 +258,14 @@ export interface FileStore {
   copyNumber: number;
   firstPdp: boolean;
   pdpInterval: number;
-  timeExpired: number;
+  timeExpired: Date;
   pdpParam: string;
   storageType: number;
 }
 
 export interface FileRenew {
   fileHash: string;
-  renewTime: number;
+  renewTime: Date;
 }
 
 export interface FileTransfer {
