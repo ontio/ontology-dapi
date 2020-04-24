@@ -37,7 +37,8 @@ export interface FsAPI {
    * Settle file read profit
    * @param fileReadSettleSlice
    */
-  fileReadProfitSettle({fileReadSettleSlice}: {fileReadSettleSlice: FileReadSettleSlice}): Promise<Response>;
+  fileReadProfitSettle({fileReadSettleSlice, gasPrice, gasLimit }:
+    {fileReadSettleSlice: FileReadSettleSlice, gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
    * Verify file read settle slice
@@ -68,7 +69,8 @@ export interface FsAPI {
    * @param fileHash File hash hex
    * @param nodeAddr Fs node wallet address
    */
-  chanllenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Response>;
+  chanllenge({fileHash, nodeAddr, gasPrice, gasLimit}:
+    {fileHash: string, nodeAddr: string, gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
    * Get challenge for some file from some node
@@ -77,10 +79,14 @@ export interface FsAPI {
    */
   getChallenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Challenge>;
 
-  response({fileHash, proveData, blockHeight}:
-    {fileHash: string, proveData: string, blockHeight: number}): Promise<Response>;
+  response({fileHash, proveData, blockHeight, gasPrice, gasLimit}:
+    {
+      fileHash: string, proveData: string, blockHeight: number,
+      gasPrice?: number, gasLimit?: number
+    }): Promise<Response>;
 
-  judge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Response>;
+  judge({fileHash, nodeAddr, gasPrice, gasLimit}:
+    {fileHash: string, nodeAddr: string, gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
    * Get challenge list for certain file
@@ -108,21 +114,27 @@ export interface FsAPI {
    * Store files
    * @param filesInfo info of files to store
    */
-  storeFiles({filesInfo}: {filesInfo: FileStore[]}): Promise<Response>;
+  storeFiles({filesInfo, gasPrice, gasLimit }:
+    {filesInfo: FileStore[], gasPrice?: number, gasLimit?: number }): Promise<Response>;
 
   /**
    * Transfer file to new owner
    * @param fileTransfers file transfer detail
    */
-  transferFiles({fileTransfers}: {fileTransfers: FileTransfer[]}): Promise<Response>;
+  transferFiles({fileTransfers, gasPrice, gasLimit }:
+    {fileTransfers: FileTransfer[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
    * @param filesRenew
    */
-  renewFiles({filesRenew}: {filesRenew: FileRenew[]}): Promise<Response>;
-  deleteFiles({fileHashes}: {fileHashes: string[]}): Promise<Response>;
-  fileReadPledge({fileHash, readPlans}: {fileHash: string, readPlans: ReadPlan[]}): Promise<Response>;
-  cancelFileRead({fileHash}: {fileHash: string}): Promise<Response>;
+  renewFiles({filesRenew, gasPrice, gasLimit }:
+    {filesRenew: FileRenew[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
+  deleteFiles({fileHashes, gasPrice, gasLimit }:
+    {fileHashes: string[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
+  fileReadPledge({fileHash, readPlans, gasPrice, gasLimit}:
+    {fileHash: string, readPlans: ReadPlan[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
+  cancelFileRead({fileHash, gasPrice, gasLimit}:
+    {fileHash: string, gasPrice?: number, gasLimit?: number}): Promise<Response>;
   // genPassport(): Promise<string>;
   genFileReadSettleSlice(
       {fileHash, payTo, sliceId, pledgeHeight}: {fileHash: string, payTo: string, sliceId: number, pledgeHeight: number}
@@ -141,8 +153,9 @@ export interface FsNodeAPI {
    * @param nodeNetAddr Fs Server Node network address, e.g. https://10.0.0.1:30335
    */
   register(
-    {volume, minPdpInterval, serviceTime, nodeNetAddr}
-    : {volume: number, serviceTime: Date, minPdpInterval: number, nodeNetAddr: string}
+    {volume, minPdpInterval, serviceTime, nodeNetAddr, gasPrice, gasLimit}
+    : {volume: number, serviceTime: Date, minPdpInterval: number,
+      nodeNetAddr: string, gasPrice?: number, gasLimit?: number}
   ): Promise<Response>;
 
   /**
@@ -159,19 +172,20 @@ export interface FsNodeAPI {
    * @param nodeNetAddr Fs Server Node network address, e.g. https://10.0.0.1:30335
    */
   update(
-    {volume, serviceTime, minPdpInterval, nodeNetAddr}
-    : {volume: number, serviceTime: Date, minPdpInterval: number, nodeNetAddr: string}
+    {volume, serviceTime, minPdpInterval, nodeNetAddr, gasPrice, gasLimit}
+    : {volume: number, serviceTime: Date, minPdpInterval: number,
+      nodeNetAddr: string,  gasPrice?: number, gasLimit?: number}
   ): Promise<Response>;
 
   /**
    * Cancel Node Register
    */
-  cancel(): Promise<Response>;
+  cancel({gasPrice, gasLimit}: {gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
    * Node draw profit
    */
-  drawProfit(): Promise<Response>;
+  drawProfit({gasPrice, gasLimit}: {gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
    * For node prove that it has some file
@@ -180,7 +194,8 @@ export interface FsNodeAPI {
    * @param blockHeight Next Pdp interval beginning block height
    */
   fileProve(
-    {fileHash, proveData, blockHeight}: {fileHash: string, proveData: string, blockHeight: number}
+    {fileHash, proveData, blockHeight, gasPrice, gasLimit}:
+    {fileHash: string, proveData: string, blockHeight: number, gasPrice?: number, gasLimit?: number}
   ): Promise<Response>;
 }
 
@@ -194,8 +209,8 @@ export interface FsSpaceAPI {
    * @param timeExpired space expire time
    */
   create(
-    {volume, copyNumber, pdpInterval, timeExpired}
-    : {volume: number, copyNumber: number, pdpInterval: number, timeExpired: Date}
+    {volume, copyNumber, pdpInterval, timeExpired, gasPrice, gasLimit}
+    : {volume: number, copyNumber: number, pdpInterval: number, timeExpired: Date, gasPrice?: number, gasLimit?: number}
   ): Promise<Response>;
 
   /**
@@ -208,10 +223,11 @@ export interface FsSpaceAPI {
    * @param volume space volume. (KB)
    * @param timeExpired space expire time
    */
-  update({volume, timeExpired}: {volume: number, timeExpired: Date}): Promise<Response>;
+  update({volume, timeExpired, gasPrice, gasLimit}:
+    {volume: number, timeExpired: Date, gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
    * Delete user space
    */
-  delete(): Promise<Response>;
+  delete({gasPrice, gasLimit}: {gasPrice?: number, gasLimit?: number}): Promise<Response>;
 }

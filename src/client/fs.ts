@@ -13,8 +13,8 @@ const space: FsSpaceAPI = {
   update(args) {
     return call<Response>('fs.space.update', args);
   },
-  delete() {
-    return call<Response>('fs.space.delete');
+  delete(args) {
+    return call<Response>('fs.space.delete', args);
   }
 };
 
@@ -28,11 +28,11 @@ const node: FsNodeAPI = {
   update(args) {
     return call<Response>('fs.node.update', args);
   },
-  cancel() {
-    return call<Response>('fs.node.cancel');
+  cancel(args) {
+    return call<Response>('fs.node.cancel', args);
   },
-  drawProfit() {
-    return call<Response>('fs.node.drawProfit');
+  drawProfit(args) {
+    return call<Response>('fs.node.drawProfit', args);
   },
   fileProve(args) {
     return call<Response>('fs.node.fileProve', args);
@@ -58,7 +58,7 @@ export const fsApi: FsAPI = {
     return call<FsNodeInfo>('fs.getNodeInfo', args);
   },
   getNodeInfoList(args) {
-    return call<FsNodeInfoList>('fs.GetNodeInfoList', args);
+    return call<FsNodeInfoList>('fs.getNodeInfoList', args);
   },
   chanllenge(args) {
     return call<Response>('fs.chanllenge', args);
