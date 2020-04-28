@@ -1,6 +1,7 @@
 import { Challenge, ChallengeList, FileHashList, FileInfo,
   FileReadSettleSlice, FsNodeInfo, FsNodeInfoList, PdpRecordList, ReadPledge, Space } from '..';
 import { FsAPI, FsNodeAPI, FsSpaceAPI } from '../api/fs';
+import { Response } from '../api/types';
 import { call } from './proxy';
 
 const space: FsSpaceAPI = {
