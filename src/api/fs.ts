@@ -149,14 +149,13 @@ export interface FsNodeAPI {
   /**
    * Register a FS server node
    * @param volume FS server volume (KB)
-   * @param minPdpInterval the minimal pdp interval request to the file uploaded (Sec.)
    * @param serviceTime Service time deadline (Date)
    * @param nodeNetAddr Fs Server Node network address, e.g. https://10.0.0.1:30335
    */
   register(
-    {volume, minPdpInterval, serviceTime, nodeNetAddr, gasPrice, gasLimit}
-    : {volume: number, serviceTime: Date, minPdpInterval: number,
-      nodeNetAddr: string, gasPrice?: number, gasLimit?: number}
+    {volume, serviceTime, nodeNetAddr, gasPrice, gasLimit}
+    : {volume: number, serviceTime: Date, nodeNetAddr: string,
+      gasPrice?: number, gasLimit?: number}
   ): Promise<Response>;
 
   /**
@@ -168,14 +167,13 @@ export interface FsNodeAPI {
   /**
    * Update Info of FS server node
    * @param volume FS server volume (KB)
-   * @param minPdpInterval the minimal pdp interval request to the file uploaded (Sec.)
    * @param serviceTime Service time deadline (Date)
    * @param nodeNetAddr Fs Server Node network address, e.g. https://10.0.0.1:30335
    */
   update(
-    {volume, serviceTime, minPdpInterval, nodeNetAddr, gasPrice, gasLimit}
-    : {volume: number, serviceTime: Date, minPdpInterval: number,
-      nodeNetAddr: string,  gasPrice?: number, gasLimit?: number}
+    {volume, serviceTime, nodeNetAddr, gasPrice, gasLimit}
+    : {volume: number, serviceTime: Date, nodeNetAddr: string,
+      gasPrice?: number, gasLimit?: number}
   ): Promise<Response>;
 
   /**
@@ -206,12 +204,12 @@ export interface FsSpaceAPI {
    * @param volume space volume (KB)
    * @param copyNumber Copy number of files stored in this space,
    *    thus all files in same space will have same copy number.
-   * @param pdpInterval Pdp Interval of space to create
+   * @param timeStart space start time
    * @param timeExpired space expire time
    */
   create(
-    {volume, copyNumber, pdpInterval, timeExpired, gasPrice, gasLimit}
-    : {volume: number, copyNumber: number, pdpInterval: number, timeExpired: Date, gasPrice?: number, gasLimit?: number}
+    {volume, copyNumber, timeStart, timeExpired, gasPrice, gasLimit}
+    : {volume: number, copyNumber: number, timeStart: Date, timeExpired: Date, gasPrice?: number, gasLimit?: number}
   ): Promise<Response>;
 
   /**

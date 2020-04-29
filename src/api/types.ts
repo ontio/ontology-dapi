@@ -144,7 +144,6 @@ export interface FsNodeInfo {
   volume: number;
   restVol: number;
   serviceTime: Date;
-  minPdpInterval: number;
   nodeAddr: string;
   nodeNetAddr: string;
 }
@@ -157,13 +156,12 @@ export interface ReadPlan {
   nodeAddr: string;
   maxReadBlockNum: number;
   haveReadBlockNum: number;
+  numOfSettlements: number;
 }
 
 export interface ReadPledge {
   fileHash: string;
   downloader: string;
-  blockHeight: number;
-  expireHeight: number;
   restMoney: number;
   readPlans: ReadPlan[];
 }
@@ -182,9 +180,7 @@ export interface PdpRecord {
   nodeAddr: string;
   fileHash: string;
   fileOwner: string;
-  pdpCount: number;
   lastPdpTime: Date;
-  nextHeight: number;
   settleFlag: boolean;
 }
 
@@ -213,7 +209,6 @@ export interface Space {
   copyNumber: number;
   payAmount: number;
   restAmount: number;
-  pdpInterval: number;
   timeStart: Date;
   timeExpired: Date;
   validFlag: boolean;
@@ -236,11 +231,11 @@ export interface FileInfo {
   copyNumber: number;
   payAmount: number;
   restAmount: number;
-  fileCost: number;
   firstPdp: boolean;
-  pdpInterval: number;
   timeStart: Date;
   timeExpired: Date;
+  beginHeight: number;
+  expiredHeight: number;
   pdpParam: string;
   validFlag: boolean;
   storageType: number;
@@ -257,7 +252,7 @@ export interface FileStore {
   realFileSize: number;
   copyNumber: number;
   firstPdp: boolean;
-  pdpInterval: number;
+  timeStart: Date;
   timeExpired: Date;
   pdpParam: string;
   storageType: number;
