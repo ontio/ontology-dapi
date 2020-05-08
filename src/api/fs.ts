@@ -80,12 +80,24 @@ export interface FsAPI {
    */
   getChallenge({fileHash, nodeAddr}: {fileHash: string, nodeAddr: string}): Promise<Challenge>;
 
+  /**
+   * Response from ontfs server to challenge from clients
+   * @param fileHash File hash of the response
+   * @param proveData prove data
+   * @param blockHeight block height of the file
+   */
   response({fileHash, proveData, blockHeight, gasPrice, gasLimit}:
     {
       fileHash: string, proveData: string, blockHeight: number,
       gasPrice?: number, gasLimit?: number
     }): Promise<Response>;
 
+  /**
+   * Client could judge if server haven't responsed to client's challenge for a period,
+   * in which case it may cause the server node to be punished
+   * @param fileHash file hash in the challenge
+   * @param nodeAddr node address
+   */
   judge({fileHash, nodeAddr, gasPrice, gasLimit}:
     {fileHash: string, nodeAddr: string, gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
@@ -126,17 +138,42 @@ export interface FsAPI {
     {fileTransfers: FileTransfer[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
 
   /**
-   * @param filesRenew
+   * Renew File Info
+   * @param filesRenew file info to be updated to
    */
   renewFiles({filesRenew, gasPrice, gasLimit }:
     {filesRenew: FileRenew[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
+
+  /**
+   * delete files in batch
+   * @param fileHashes File Hash array
+   */
   deleteFiles({fileHashes, gasPrice, gasLimit }:
     {fileHashes: string[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
+
+  /**
+   * Get File Read Pledge
+   * @param fileHash file hash of the file that you want to read and download
+   * @param readPlans Read plans
+   */
   fileReadPledge({fileHash, readPlans, gasPrice, gasLimit}:
     {fileHash: string, readPlans: ReadPlan[], gasPrice?: number, gasLimit?: number}): Promise<Response>;
+
+  /**
+   * Cancel File Read
+   * @param fileHash fileHash that you want to cancel read
+   */
   cancelFileRead({fileHash, gasPrice, gasLimit}:
     {fileHash: string, gasPrice?: number, gasLimit?: number}): Promise<Response>;
   // genPassport(): Promise<string>;
+
+  /**
+   * generate file read settle slice whild downloading, it needs user's signature
+   * @param fileHash file hash of the settle slice
+   * @param payTo the node address to pay to
+   * @param sliceId slice id of the file slice
+   * @param pledgeHeight Pledge height
+   */
   genFileReadSettleSlice(
       {fileHash, payTo, sliceId, pledgeHeight}: {fileHash: string, payTo: string, sliceId: number, pledgeHeight: number}
   ): Promise<FileReadSettleSlice>;
