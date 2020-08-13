@@ -6,6 +6,7 @@ import { ProviderApi } from './provider';
 import { SmartContractApi } from './smartContract';
 import { StateChannelApi } from './stateChannel';
 import { UtilsApi } from './utils';
+import { ClaimApi } from './claim';
 
 export * from './types';
 export { AssetApi } from './asset';
@@ -16,6 +17,7 @@ export { ProviderApi } from './provider';
 export { SmartContractApi } from './smartContract';
 export { StateChannelApi } from './stateChannel';
 export { UtilsApi } from './utils';
+export { ClaimApi } from './claim';
 
 export interface DApi {
   asset: AssetApi;
@@ -26,4 +28,5 @@ export interface DApi {
   smartContract: SmartContractApi;
   utils: UtilsApi;
   stateChannel: StateChannelApi;
+  claim: ClaimApi;
 }

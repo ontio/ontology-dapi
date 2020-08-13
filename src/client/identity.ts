@@ -15,10 +15,4 @@ export const identityApi: IdentityApi = {
   removeAttribute(args) {
     return call<void>('identity.removeAttribute', args);
   },
-  addClaims(args) {
-    return call<void>('identity.addClaims', args);
-  },
-  getClaims() {
-    return call<string[]>('identity.getClaims');
-  },
 };

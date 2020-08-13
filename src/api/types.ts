@@ -138,3 +138,8 @@ export interface GasPrice {
   height: number;
 }
 
+export interface Claim {
+  ontid: string;
+  tags: string[];
+  body: string;
+}

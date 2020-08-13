@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Asset } from './asset';
 import { Home } from './home';
-import { Identity } from './identity';
+import { Identity } from './claims';
 import { Message } from './message';
 import { Network } from './network';
 import { Oep4 } from './oep4';

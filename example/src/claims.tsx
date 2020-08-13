@@ -5,10 +5,13 @@ import { RouterProps } from 'react-router';
 
 export const Identity: React.SFC<RouterProps> = (props) => {
   async function onAddClaim(values: any) {
-    const claim: string = values.claim;
+    const ontid: string = await client.api.identity.getIdentity();
+    const tag: string = values.tag;
+    const body: string = values.body;
+    const claim = { ontid, tags: [tag], body };
 
     try {
-      const result = await client.api.identity.addClaims({ claims: [claim] });
+      const result = await client.api.claim.addClaims({ claims: [claim] });
       alert('onAddClaim finished');
     } catch (e) {
       alert('onAddClaim canceled');
@@ -18,7 +21,7 @@ export const Identity: React.SFC<RouterProps> = (props) => {
   }
 
   async function onGetClaims() {
-    const claims  = await client.api.identity.getClaims();
+    const claims  = await client.api.claim.getClaims();
     console.log(claims);
   }
 
@@ -31,13 +34,17 @@ export const Identity: React.SFC<RouterProps> = (props) => {
       <h2>Add Claim</h2>
       <Form
         initialValues={{
-          claim: '123456'
+          tag: '123',
+          body: '123456'
         }}
         onSubmit={onAddClaim}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <h4>Claim</h4>
-            <Field name="claim" component="textarea" />
+            <h4>Tag</h4>
+            <Field name="tag" component="input" />
+
+            <h4>Body</h4>
+            <Field name="body" component="textarea" />
 
             <br />
             <button type="submit">addClaims</button>
