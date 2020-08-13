@@ -31,7 +31,7 @@ const result = await client.api.asset.send({ to, asset, amount });
 
 ### Initialise Smart contract call
 ```
-import { client, Parameter } from 'ontology-dapi';
+import { client, Parameter } from '@ont-dev/ontology-dapi';
 
 const scriptHash = 'fe7a542bd4f1ae71d42c4b15480fb2f421c7631b';
 const operation = 'Add';
@@ -44,7 +44,7 @@ const result = await client.api.smartContract.invoke({ scriptHash, operation, ar
 
 ### Initialise Readonly Smart contract call
 ```
-import { client, Parameter } from 'ontology-dapi';
+import { client, Parameter } from '@ont-dev/ontology-dapi';
 
 const scriptHash = 'fe7a542bd4f1ae71d42c4b15480fb2f421c7631b';
 const operation = 'Add';

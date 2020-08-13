@@ -15,17 +15,17 @@ ontology-dapi 可以作为 CommonJS/ES6 模块或在网页中直接使用.
 
 ### 安装 CommonJS/ES 模块
 ```
-npm install ontology-dapi
+npm install @ont-dev/ontology-dapi
 ```
 
 ### 导入 CommonJS
 ```
-var client = require('ontology-dapi').client;
+var client = require('@ont-dev/ontology-dapi').client;
 ```
 
 ### 导入 ES6 模块
 ```
-import { client } from 'ontology-dapi';
+import { client } from '@ont-dev/ontology-dapi';
 ```
 
 ### Web require
@@ -43,7 +43,7 @@ var client = dApi.client;
 dApp 先注册 **dAPI provider**的客户端.
 
 ```
-import { client } from 'ontology-dapi';
+import { client } from '@ont-dev/ontology-dapi';
 
 client.registerClient({});
 ```
