@@ -8,7 +8,8 @@ export const Identity: React.SFC<RouterProps> = (props) => {
     const ontid: string = await client.api.identity.getIdentity();
     const tag: string = values.tag;
     const body: string = values.body;
-    const claim = { ontid, tags: [tag], body };
+    const bodyEncrypted: boolean = values.bodyEncrypted;
+    const claim = { ontid, tags: [tag], body, bodyEncrypted };
 
     try {
       const result = await client.api.claim.addClaims({ claims: [claim] });
@@ -45,6 +46,9 @@ export const Identity: React.SFC<RouterProps> = (props) => {
 
             <h4>Body</h4>
             <Field name="body" component="textarea" />
+
+            <h4>Body Encrypted</h4>
+            <Field name="bodyEncrypted" component="input" type="checkbox" />
 
             <br />
             <button type="submit">addClaims</button>

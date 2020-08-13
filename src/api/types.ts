@@ -142,4 +142,5 @@ export interface Claim {
   ontid: string;
   tags: string[];
   body: string;
+  bodyEncrypted: boolean;
 }
