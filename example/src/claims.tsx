@@ -12,7 +12,7 @@ export const Identity: React.SFC<RouterProps> = (props) => {
     const claim = { ontid, tags: [tag], body, bodyEncrypted };
 
     try {
-      const result = await client.api.claim.addClaims({ claims: [claim] });
+      const result = await client.api.claim.addClaim({ claim: claim });
       alert('onAddClaim finished');
     } catch (e) {
       alert('onAddClaim canceled');
@@ -51,7 +51,7 @@ export const Identity: React.SFC<RouterProps> = (props) => {
             <Field name="bodyEncrypted" component="input" type="checkbox" />
 
             <br />
-            <button type="submit">addClaims</button>
+            <button type="submit">addClaim</button>
           </form>
         )}
       />

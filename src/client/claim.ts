@@ -3,8 +3,8 @@ import { Claim } from '../api/types';
 import { call } from './proxy';
 
 export const claimApi: ClaimApi = {
-  addClaims(args) {
-    return call<void>('claim.addClaims', args);
+  addClaim(args) {
+    return call<void>('claim.addClaim', args);
   },
   getClaims() {
     return call<Claim[]>('claim.getClaims');

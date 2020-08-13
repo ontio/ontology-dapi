@@ -4,9 +4,9 @@ export interface ClaimApi {
   /**
    * Adds claims to currently selected identity.
    *
-   * @param claims Alaims to add
+   * @param claim Claim to add
    */
-  addClaims({ claims }: { claims: Claim[] }): Promise<void>;
+  addClaim({ claim }: { claim: Claim }): Promise<void>;
 
   /**
    * Queries claims of currently selected identity.
