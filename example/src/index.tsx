@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Asset } from './asset';
 import { Home } from './home';
+import { Identity } from './identity';
 import { Message } from './message';
 import { Network } from './network';
 import { Oep4 } from './oep4';
@@ -20,6 +21,7 @@ const App: React.SFC<{}> = () => (
       <Route path="/smart-contract" exact={true} component={SmartContract} />
       <Route path="/message" exact={true} component={Message} />
       <Route path="/provider" exact={true} component={Provider} />
+      <Route path="/identity" exact={true} component={Identity} />
     </>
   </BrowserRouter>
 );

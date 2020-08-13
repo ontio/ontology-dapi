@@ -43,7 +43,7 @@ export interface IdentityApi {
   /**
    * Queries claims of currently selected identity.
    *
-   * @throws MALFORMED_IDENTITY
+   * @throws NO_IDENTITY
    */
   getClaims(): Promise<string[]>;
 }
