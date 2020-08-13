@@ -4,9 +4,9 @@ import { call } from './proxy';
 
 export const claimApi: ClaimApi = {
   addClaims(args) {
-    return call<void>('identity.addClaims', args);
+    return call<void>('claim.addClaims', args);
   },
   getClaims() {
-    return call<Claim[]>('identity.getClaims');
+    return call<Claim[]>('claim.getClaims');
   },
 };
