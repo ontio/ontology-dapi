@@ -31,4 +31,19 @@ export interface IdentityApi {
    * @throws NO_IDENTITY
    */
   removeAttribute({ key }: { key: string }): Promise<void>;
+
+  /**
+   * Adds claims to currently selected identity.
+   *
+   * @param claims Alaims to add
+   * @throws NO_IDENTITY
+   */
+  addClaims({ claims }: { claims: string[] }): Promise<void>;
+
+  /**
+   * Queries claims of currently selected identity.
+   *
+   * @throws MALFORMED_IDENTITY
+   */
+  getClaims(): Promise<string[]>;
 }
