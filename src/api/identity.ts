@@ -31,4 +31,17 @@ export interface IdentityApi {
    * @throws NO_IDENTITY
    */
   removeAttribute({ key }: { key: string }): Promise<void>;
+
+  /**
+   * Adds credential to current selected identity.
+   *
+   * @param tags tags of the credential
+   * @param credential serialized jwt credential
+   */
+  addCredential({ tags, credential }: { tags: string[], credential: string }): Promise<void>;
+
+  /**
+   * Queries credentials of currently selected identity.
+   */
+  getCredentials(): Promise<Array<{ tags: string[], credential: string }>>;
 }

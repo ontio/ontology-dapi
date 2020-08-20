@@ -138,9 +138,7 @@ export interface GasPrice {
   height: number;
 }
 
-export interface Claim {
-  ontid: string;
+export interface MessageRecord {
   tags: string[];
-  body: string;
-  bodyEncrypted: boolean;
+  message: string;
 }

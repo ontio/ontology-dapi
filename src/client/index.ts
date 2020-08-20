@@ -8,7 +8,6 @@ import { registerClient } from './proxy';
 import { smartContractApi as smartContract } from './smartContract';
 import { stateChannelApi as stateChannel } from './stateChannel';
 import { utilsApi as utils } from './utils';
-import { claimApi as claim } from './claim';
 
 const api: DApi = {
   asset,
@@ -18,8 +17,7 @@ const api: DApi = {
   provider,
   smartContract,
   stateChannel,
-  utils,
-  claim
+  utils
 };
 
 export { registerClient, api };
