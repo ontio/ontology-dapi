@@ -88,4 +88,44 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
 
   checkedRegister('stateChannel.login', provider.stateChannel.login);
   checkedRegister('stateChannel.sign', provider.stateChannel.sign);
+
+  if (provider.fs) {
+    checkedRegister('fs.node.register', provider.fs.node.register);
+    checkedRegister('fs.node.query', provider.fs.node.query);
+    checkedRegister('fs.node.update', provider.fs.node.update);
+    checkedRegister('fs.node.cancel', provider.fs.node.cancel);
+    checkedRegister('fs.node.drawProfit', provider.fs.node.drawProfit);
+    checkedRegister('fs.node.fileProve', provider.fs.node.fileProve);
+
+    checkedRegister('fs.space.create', provider.fs.space.create);
+    checkedRegister('fs.space.get', provider.fs.space.get);
+    checkedRegister('fs.space.update', provider.fs.space.update);
+    checkedRegister('fs.space.delete', provider.fs.space.delete);
+
+    checkedRegister('fs.getFileReadPledge', provider.fs.getFileReadPledge);
+    checkedRegister('fs.fileReadProfitSettle', provider.fs.fileReadProfitSettle);
+    checkedRegister('fs.verifyFileReadSettleSlice', provider.fs.verifyFileReadSettleSlice);
+    checkedRegister('fs.getFilePdpRecordList', provider.fs.getFilePdpRecordList);
+    checkedRegister('fs.getNodeInfo', provider.fs.getNodeInfo);
+    checkedRegister('fs.getNodeInfoList', provider.fs.getNodeInfoList);
+    checkedRegister('fs.chanllenge', provider.fs.chanllenge);
+    checkedRegister('fs.getChallegen', provider.fs.getChallenge);
+    checkedRegister('fs.response', provider.fs.response);
+    checkedRegister('fs.judge', provider.fs.judge);
+    checkedRegister('fs.getFileChallengeList', provider.fs.getFileChallengeList);
+    checkedRegister('fs.getNodeChallengeList', provider.fs.getNodeChallengeList);
+    checkedRegister('fs.getFileList', provider.fs.getFileList);
+    checkedRegister('fs.getFileInfo', provider.fs.getFileInfo);
+    checkedRegister('fs.storeFiles', provider.fs.storeFiles);
+    checkedRegister('fs.transferFiles', provider.fs.transferFiles);
+    checkedRegister('fs.renewFiles', provider.fs.renewFiles);
+    checkedRegister('fs.deleteFiles', provider.fs.deleteFiles);
+    checkedRegister('fs.fileReadPledge', provider.fs.fileReadPledge);
+    checkedRegister('fs.cancelFileRead', provider.fs.cancelFileRead);
+    // checkedRegister('fs.genPassport', provider.fs.genPassport);
+    checkedRegister('fs.genFileReadSettleSlice', provider.fs.genFileReadSettleSlice);
+  } else {
+    // tslint:disable-next-line: no-console
+    console.warn('fs module is not defined in this provider.');
+  }
 }

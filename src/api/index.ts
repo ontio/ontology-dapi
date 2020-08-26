@@ -1,4 +1,5 @@
 import { AssetApi } from './asset';
+import { FsAPI } from './fs';
 import { IdentityApi } from './identity';
 import { MessageApi } from './message';
 import { NetworkApi } from './network';
@@ -9,6 +10,7 @@ import { UtilsApi } from './utils';
 
 export * from './types';
 export { AssetApi } from './asset';
+export { FsAPI, FsNodeAPI, FsSpaceAPI } from './fs';
 export { IdentityApi } from './identity';
 export { MessageApi } from './message';
 export { NetworkApi } from './network';
@@ -26,4 +28,5 @@ export interface DApi {
   smartContract: SmartContractApi;
   utils: UtilsApi;
   stateChannel: StateChannelApi;
+  fs?: FsAPI;
 }
