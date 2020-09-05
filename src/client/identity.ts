@@ -14,5 +14,11 @@ export const identityApi: IdentityApi = {
   },
   removeAttribute(args) {
     return call<void>('identity.removeAttribute', args);
+  },
+  addCredential(args) {
+    return call<void>('identity.addCredential', args);
+  },
+  getCredentials() {
+    return call<Array<{ tags: string[], credential: string }>>('identity.getCredentials');
   }
 };

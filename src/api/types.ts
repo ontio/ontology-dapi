@@ -138,3 +138,7 @@ export interface GasPrice {
   height: number;
 }
 
+export interface MessageRecord {
+  tags: string[];
+  message: string;
+}

@@ -49,6 +49,8 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   checkedRegister('identity.getDDO', provider.identity.getDDO);
   checkedRegister('identity.addAttributes', provider.identity.addAttributes);
   checkedRegister('identity.removeAttribute', provider.identity.removeAttribute);
+  checkedRegister('identity.addCredential', provider.identity.addCredential);
+  checkedRegister('identity.getCredentials', provider.identity.getCredentials);
 
   checkedRegister('message.signMessage', provider.message.signMessage);
   checkedRegister('message.verifyMessage', provider.message.verifyMessage);
