@@ -1,5 +1,4 @@
 import { WindowPostMessageProxy } from '@ont-community/window-post-message-proxy';
-import { browser } from 'webextension-polyfill-ts';
 import { DApi } from './api';
 import { MethodType, Rpc } from './rpc/rpc';
 
@@ -12,6 +11,7 @@ export function registerContentProxy({
   logMessages?: boolean;
   logWarnings?: boolean;
 }) {
+  const { browser } = require('webextension-polyfill-ts');
   const windowPostMessageProxy = new WindowPostMessageProxy({
     logMessages,
     suppressWarnings: !logWarnings,
@@ -26,6 +26,7 @@ export function registerContentProxy({
 }
 
 export function registerProvider({ provider, logMessages }: { provider: DApi; logMessages: boolean }) {
+  const { browser } = require('webextension-polyfill-ts');
   rpc = new Rpc({
     source: 'background',
     destination: 'page',
