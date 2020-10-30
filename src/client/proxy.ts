@@ -21,7 +21,7 @@ export function registerClient({
     source: 'page',
     destination: 'background',
     logMessages: false,
-    postMessage: windowProxy.postMessage.bind(windowProxy, window)
+    postMessage: (msg) => windowProxy.postMessage(window, msg)
   });
 }
 

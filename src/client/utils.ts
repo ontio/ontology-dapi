@@ -1,9 +1,8 @@
 import * as baseX from 'base-x';
 import * as cryptoJS from 'crypto-js';
 
-/* eslint-disable global-require */
+// tslint:disable-next-line: no-var-requires
 const typedarrayToBuffer = require('typedarray-to-buffer');
-/* eslint-enable global-require */
 
 import { UtilsApi } from '../api/utils';
 
@@ -91,7 +90,7 @@ function ab2hexstring(arr: any): string {
 }
 
 function ab2str(buf: ArrayBuffer | number[]): string {
-  return String.fromCharCode.apply(null, new Uint8Array(buf));
+  return String.fromCharCode.apply(null, Array.from(new Uint8Array(buf)));
 }
 
 export function str2ab(str: string) {

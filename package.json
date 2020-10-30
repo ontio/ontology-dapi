@@ -1,6 +1,6 @@
 {
   "name": "@ont-dev/ontology-dapi",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
@@ -8,7 +8,8 @@
     "test": "jest",
     "lint": "tslint --project ./",
     "build:dev": "cross-env NODE_ENV=development webpack --mode development --display-error-details --progress --color",
-    "build:prod": "cross-env NODE_ENV=production webpack --mode production --progress --color"
+    "build:prod": "cross-env NODE_ENV=production webpack --mode production --progress --color",
+    "prepublish": "npm run lint && npm run build:prod"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -35,7 +36,7 @@
   "devDependencies": {
     "@types/bs58": "^3.0.30",
     "@types/crypto-js": "^3.1.43",
-    "@types/node": "^8.5.2",
+    "@types/node": "^11.15.20",
     "@types/promise-timeout": "^1.3.0",
     "@types/uuid": "^3.4.3",
     "babel-core": "^6.26.3",
@@ -50,7 +51,7 @@
     "tslint": "^5.10.0",
     "tslint-eslint-rules": "^5.3.1",
     "tslint-no-circular-imports": "^0.4.0",
-    "typescript": "^2.9.1",
+    "typescript": "^3.9.7",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
     "webpack-node-externals": "^1.7.2"

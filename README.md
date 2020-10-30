@@ -17,6 +17,11 @@ ontology-dapi can be used as CommonJS/ES6 module or directly referencing in web 
 ```
 npm install @ont-dev/ontology-dapi
 ```
+or
+
+```
+yarn add @ont-dev/ontology-dapi
+```
 
 ### Import CommonJS
 ```
@@ -62,7 +67,7 @@ The definitions of the methods can be found directly in the [OEP-6](https://gith
 ### Required Tools and Dependencies
 
 * Node
-* Npm
+* Yarn
 
 ### Developing
 
@@ -77,14 +82,14 @@ cd ontology-dapi
 #### Install
 
 ```
-npm install
+yarn
 ```
 
 #### Development build
 This will build the project with minimum polyfilling for better debug experience.
 
 ````
-npm run build:dev
+yarn build:dev
 ````
 
 You will get the packaged code under '/lib'.
@@ -92,7 +97,7 @@ You will get the packaged code under '/lib'.
 #### Production build 
 
 ````
-npm run build:prod
+yarn build:prod
 ````
 
 You will get the packaged code under '/lib'

@@ -17,6 +17,10 @@ ontology-dapi 可以作为 CommonJS/ES6 模块或在网页中直接使用.
 ```
 npm install @ont-dev/ontology-dapi
 ```
+或者
+```
+yarn add @ont-dev/ontology-dapi
+```
 
 ### 导入 CommonJS
 ```
@@ -62,7 +66,7 @@ client.registerClient({});
 ### 安装工具与依赖
 
 * Node
-* Npm
+* Yarn
 
 ### 开发
 
@@ -77,20 +81,20 @@ cd ontology-dapi
 #### 安装
 
 ```
-npm install
+yarn
 ```
 
 #### 开发Build
 
 ````
-npm run build:dev
+yarn build:dev
 ````
 
 
 #### 产品Build
 
 ````
-npm run build:prod
+yarn build:prod
 ````
 
 
