@@ -1,4 +1,5 @@
 import { WindowPostMessageProxy } from '@ont-community/window-post-message-proxy';
+import { Runtime } from 'webextension-polyfill-ts';
 import { DApi } from './api';
 import { MethodType, Rpc } from './rpc/rpc';
 
@@ -25,13 +26,23 @@ export function registerContentProxy({
   });
 }
 
-export function registerProvider({ provider, logMessages }: { provider: DApi; logMessages: boolean }) {
+type Listener = (data: any, sender: Runtime.MessageSender) => Promise<any>
+
+type CustomAddListener = (listener: Listener) => void;
+
+interface RegisterProviderParams {
+  provider: DApi;
+  logMessages: boolean;
+  customAddListener?: CustomAddListener;
+}
+
+export function registerProvider({ provider, logMessages, customAddListener }: RegisterProviderParams) {
   const { browser } = require('webextension-polyfill-ts');
   rpc = new Rpc({
     source: 'background',
     destination: 'page',
     logMessages,
-    addListener: browser.runtime.onMessage.addListener
+    addListener: customAddListener || browser.runtime.onMessage.addListener
   });
 
   function checkedRegister(name: string, method: MethodType | undefined) {

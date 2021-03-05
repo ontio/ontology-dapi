@@ -1,6 +1,6 @@
 {
   "name": "@ont-dev/ontology-dapi",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "",
   "main": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
