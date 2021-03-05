@@ -16,7 +16,7 @@ export const Asset: React.SFC<RouterProps> = (props) => {
 
   async function onSend(values: any) {
     const to: string = values.recipient;
-    const amount: number = Number(values.amount);
+    const amount: string = values.amount;
     const asset: 'ONT' | 'ONG' = values.asset;
 
     try {
