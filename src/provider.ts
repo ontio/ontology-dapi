@@ -4,18 +4,22 @@ import { MethodType, Rpc } from './rpc/rpc';
 
 let rpc: Rpc;
 
-export function registerContentProxy({
-  logMessages = false,
-  logWarnings = false
-}: {
+interface RegisterContentProxyParams {
   logMessages?: boolean;
   logWarnings?: boolean;
-}) {
+  extension?: ExtensionType;
+}
+
+export function registerContentProxy({
+  logMessages = false,
+  logWarnings = false,
+  extension = ExtensionType.Cyano
+}: RegisterContentProxyParams) {
   const { browser } = require('webextension-polyfill-ts');
   const windowPostMessageProxy = new WindowPostMessageProxy({
     logMessages,
     suppressWarnings: !logWarnings,
-    name: 'content-script',
+    name: extension === ExtensionType.Cyano ? 'content-script' : `content-script-${extension}`,
     target: 'page'
   });
 
@@ -23,6 +27,11 @@ export function registerContentProxy({
     handle: (msg) => browser.runtime.sendMessage(msg),
     test: (msg) => msg.type === 'dAPI.js' && msg.source === 'page'
   });
+}
+
+export enum ExtensionType {
+  Cyano = 'cyano',
+  Onto = 'onto'
 }
 
 export function registerProvider({ provider, logMessages }: { provider: DApi; logMessages: boolean }) {
