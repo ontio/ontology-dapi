@@ -1,19 +1,24 @@
 import { WindowPostMessageProxy } from '@ont-community/window-post-message-proxy';
+import { ExtensionType } from '../provider';
 import { Rpc } from '../rpc/rpc';
 
 let windowProxy: WindowPostMessageProxy;
 let rpc: Rpc;
 
-export function registerClient({
-  logMessages = false,
-  logWarnings = false
-}: {
+interface RegisterClientParams {
   logMessages?: boolean;
   logWarnings?: boolean;
-}) {
+  extension?: ExtensionType;
+}
+
+export function registerClient({
+  logMessages = false,
+  logWarnings = false,
+  extension = ExtensionType.Cyano
+}: RegisterClientParams) {
   windowProxy = new WindowPostMessageProxy({
     name: 'page',
-    target: 'content-script',
+    target: extension === ExtensionType.Cyano ? 'content-script' : `content-script-${extension}`,
     logMessages,
     suppressWarnings: !logWarnings
   });
