@@ -1,3 +1,8 @@
+export enum ExtensionType {
+  Cyano = 'cyano',
+  Onto = 'onto'
+}
+
 export type NetworkType = 'MAIN' | 'TEST' | 'PRIVATE';
 
 export type Asset = 'ONT' | 'ONG' | string;

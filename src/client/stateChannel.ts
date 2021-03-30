@@ -1,13 +1,23 @@
 import { StateChannelApi } from '../api/stateChannel';
 import { Signature } from '../api/types';
-import { call } from './proxy';
+import { Rpc } from '../rpc/rpc';
 
-export const stateChannelApi: StateChannelApi = {
-  login() {
-    return call<string>('stateChannel.login');
-  },
+export class StateChannelApiImp implements StateChannelApi {
+  private rpc: Rpc;
 
-  sign(args) {
-    return call<Signature>('stateChannel.sign', args);
+  constructor(rpc: Rpc) {
+    this.rpc = rpc;
   }
-};
+
+  login() {
+    return this.rpc.call<string>('stateChannel.login');
+  }
+
+  sign(args: {
+    channelId: string,
+    scriptHash: string,
+    message: string
+  }) {
+    return this.rpc.call<Signature>('stateChannel.sign', args);
+  }
+}

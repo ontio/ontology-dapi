@@ -1,4 +1,4 @@
-import * as client from './client';
+import * as client from './client/client';
 import * as provider from './provider';
 import { MethodType, Rpc } from './rpc/rpc';
 import { Caller, Tunnel } from './rpc/tunnel';

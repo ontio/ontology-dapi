@@ -1,19 +1,27 @@
 import { MessageApi } from '../api/message';
 import { Signature } from '../api/types';
-import { call } from './proxy';
+import { Rpc } from '../rpc/rpc';
 
-export const messageApi: MessageApi = {
-  signMessageHash(args) {
-    return call<Signature>('message.signMessageHash', args);
-  },
-  verifyMessageHash(args) {
-    return call<boolean>('message.verifyMessageHash', args);
-  },
+export class MessageApiImp implements MessageApi {
+  private rpc: Rpc;
 
-  signMessage(args) {
-    return call<Signature>('message.signMessage', args);
-  },
-  verifyMessage(args) {
-    return call<boolean>('message.verifyMessage', args);
+  constructor(rpc: Rpc) {
+    this.rpc = rpc;
   }
-};
+
+  signMessageHash(args: { messageHash: string, useIdentity?: boolean }) {
+    return this.rpc.call<Signature>('message.signMessageHash', args);
+  }
+
+  verifyMessageHash(args: { messageHash: string; signature: Signature }) {
+    return this.rpc.call<boolean>('message.verifyMessageHash', args);
+  }
+
+  signMessage(args: { message: string, useIdentity?: boolean }) {
+    return this.rpc.call<Signature>('message.signMessage', args);
+  }
+
+  verifyMessage(args: { message: string; signature: Signature }) {
+    return this.rpc.call<boolean>('message.verifyMessage', args);
+  }
+}

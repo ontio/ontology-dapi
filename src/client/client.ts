@@ -1,9 +1,9 @@
 import { WindowPostMessageProxy } from '@ont-community/window-post-message-proxy';
-import { ExtensionType } from '../provider';
+import { DApiImp } from '.';
+import { DApi, ExtensionType } from '../api';
 import { Rpc } from '../rpc/rpc';
 
-let windowProxy: WindowPostMessageProxy;
-let rpc: Rpc;
+let legacyDApi: DApi;
 
 interface RegisterClientParams {
   logMessages?: boolean;
@@ -11,25 +11,25 @@ interface RegisterClientParams {
   extension?: ExtensionType;
 }
 
-export function registerClient({
+function registerClient({
   logMessages = false,
   logWarnings = false,
   extension = ExtensionType.Cyano
-}: RegisterClientParams) {
-  windowProxy = new WindowPostMessageProxy({
+}: RegisterClientParams): DApi {
+  const windowProxy = new WindowPostMessageProxy({
     name: 'page',
     target: extension === ExtensionType.Cyano ? 'content-script' : `content-script-${extension}`,
     logMessages,
     suppressWarnings: !logWarnings
   });
-  rpc = new Rpc({
+  const rpc = new Rpc({
     source: 'page',
     destination: 'background',
     logMessages: false,
     postMessage: (msg) => windowProxy.postMessage(window, msg)
   });
+  legacyDApi = new DApiImp(rpc);
+  return legacyDApi;
 }
 
-export async function call<RESULT>(method: string, ...params: any[]) {
-  return rpc.call<RESULT>(method, ...params);
-}
+export { legacyDApi as api, registerClient };
