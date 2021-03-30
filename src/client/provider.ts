@@ -1,10 +1,16 @@
 import { timeout } from 'promise-timeout';
 import { ProviderApi } from '../api/provider';
 import { Provider } from '../api/types';
-import { call } from './proxy';
+import { Rpc } from '../rpc/rpc';
 
-export const providerApi: ProviderApi = {
-  getProvider() {
-    return timeout(call<Provider>('provider.getProvider'), 1000).catch(() => Promise.reject('NO_PROVIDER'));
+export class ProviderApiImp implements ProviderApi {
+  private rpc: Rpc;
+
+  constructor(rpc: Rpc) {
+    this.rpc = rpc;
   }
-};
+
+  getProvider() {
+    return timeout(this.rpc.call<Provider>('provider.getProvider'), 1000).catch(() => Promise.reject('NO_PROVIDER'));
+  }
+}
