@@ -14,10 +14,20 @@ export interface NetworkApi {
     fromAddress: string;
     toAddress: string;
   }): Promise<number>;
+  getAllowanceV2({
+                 asset,
+                 fromAddress,
+                 toAddress
+               }: {
+    asset: Asset;
+    fromAddress: string;
+    toAddress: string;
+  }): Promise<number>;
   getBlock({ block }: { block: number | string }): Promise<Block>;
   getTransaction({ txHash }: { txHash: string }): Promise<Transaction>;
   getNetwork(): Promise<Network>;
   getBalance({ address }: { address: string }): Promise<Balance>;
+  getBalanceV2({ address }: { address: string }): Promise<Balance>;
   isConnected(): Promise<boolean>;
 
   getUnboundOng({ address }: { address: string }): Promise<string>;

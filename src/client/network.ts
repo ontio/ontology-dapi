@@ -23,6 +23,10 @@ export const networkApi: NetworkApi = {
     return call<number>('network.getAllowance', args);
   },
 
+  getAllowanceV2(args) {
+    return call<number>('network.getAllowanceV2', args);
+  },
+
   getBlock(args) {
     return call<Block>('network.getBlock', args);
   },
@@ -37,6 +41,10 @@ export const networkApi: NetworkApi = {
 
   getBalance(args) {
     return call<Balance>('network.getBalance', args);
+  },
+
+  getBalanceV2(args) {
+    return call<Balance>('network.getBalanceV2', args);
   },
 
   isConnected() {
