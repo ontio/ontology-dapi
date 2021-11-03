@@ -19,10 +19,10 @@ export interface NetworkApi {
                  fromAddress,
                  toAddress
                }: {
-    asset: Asset;
-    fromAddress: string;
-    toAddress: string;
-  }): Promise<number>;
+                 asset: Asset;
+                 fromAddress: string;
+                 toAddress: string;
+               }): Promise<number>;
   getBlock({ block }: { block: number | string }): Promise<Block>;
   getTransaction({ txHash }: { txHash: string }): Promise<Transaction>;
   getNetwork(): Promise<Network>;
