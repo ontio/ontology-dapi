@@ -68,7 +68,9 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   checkedRegister('message.verifyMessageHash', provider.message.verifyMessageHash);
 
   checkedRegister('network.getAllowance', provider.network.getAllowance);
+  checkedRegister('network.getAllowanceV2', provider.network.getAllowanceV2);
   checkedRegister('network.getBalance', provider.network.getBalance);
+  checkedRegister('network.getBalanceV2', provider.network.getBalanceV2);
   checkedRegister('network.getBlock', provider.network.getBlock);
   checkedRegister('network.getBlockHeight', provider.network.getBlockHeight);
   checkedRegister('network.getMerkleProof', provider.network.getMerkleProof);
