@@ -1,23 +1,38 @@
 import { DApi } from '../api';
-import { assetApi as asset } from './asset';
-import { identityApi as identity } from './identity';
-import { messageApi as message } from './message';
-import { networkApi as network } from './network';
-import { providerApi as provider } from './provider';
-import { registerClient } from './proxy';
-import { smartContractApi as smartContract } from './smartContract';
-import { stateChannelApi as stateChannel } from './stateChannel';
-import { utilsApi as utils } from './utils';
+import { AssetApi } from '../api/asset';
+import { IdentityApi } from '../api/identity';
+import { MessageApi } from '../api/message';
+import { NetworkApi } from '../api/network';
+import { ProviderApi } from '../api/provider';
+import { SmartContractApi } from '../api/smartContract';
+import { StateChannelApi } from '../api/stateChannel';
+import { Rpc } from '../rpc/rpc';
+import { AssetApiImp } from './asset';
+import { IdentityApiImp } from './identity';
+import { MessageApiImp } from './message';
+import { NetworkApiImp } from './network';
+import { ProviderApiImp } from './provider';
+import { SmartContractApiImp } from './smartContract';
+import { StateChannelApiImp } from './stateChannel';
+import { utilsApi } from './utils';
 
-const api: DApi = {
-  asset,
-  identity,
-  message,
-  network,
-  provider,
-  smartContract,
-  stateChannel,
-  utils
-};
+export class DApiImp implements DApi {
+  asset: AssetApi;
+  identity: IdentityApi;
+  message: MessageApi;
+  network: NetworkApi;
+  provider: ProviderApi;
+  smartContract: SmartContractApi;
+  stateChannel: StateChannelApi;
+  utils = utilsApi;
 
-export { registerClient, api };
+  constructor(rpc: Rpc) {
+    this.asset = new AssetApiImp(rpc);
+    this.identity = new IdentityApiImp(rpc);
+    this.message = new MessageApiImp(rpc);
+    this.network = new NetworkApiImp(rpc);
+    this.provider = new ProviderApiImp(rpc);
+    this.smartContract = new SmartContractApiImp(rpc);
+    this.stateChannel = new StateChannelApiImp(rpc);
+  }
+}

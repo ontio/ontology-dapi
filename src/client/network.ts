@@ -1,88 +1,111 @@
 import { NetworkApi } from '../api/network';
-import { Balance, Block, BlockWithTxList, Contract, GasPrice, MerkleProof, Network, Transaction } from '../api/types';
-import { call } from './proxy';
+import { Asset, Balance, Block, BlockWithTxList, Contract, GasPrice, MerkleProof, Network, Transaction } from '../api/types';
+import { Rpc } from '../rpc/rpc';
 
-export const networkApi: NetworkApi = {
+export class NetworkApiImp implements NetworkApi {
+  private rpc: Rpc;
+
+  constructor(rpc: Rpc) {
+    this.rpc = rpc;
+  }
+
   getNodeCount() {
-    return call<number>('network.getNodeCount');
-  },
+    return this.rpc.call<number>('network.getNodeCount');
+  }
 
   getBlockHeight() {
-    return call<number>('network.getBlockHeight');
-  },
+    return this.rpc.call<number>('network.getBlockHeight');
+  }
 
-  getMerkleProof(args) {
-    return call<MerkleProof>('network.getMerkleProof', args);
-  },
+  getMerkleProof(args: { txHash: string }) {
+    return this.rpc.call<MerkleProof>('network.getMerkleProof', args);
+  }
 
-  getStorage(args) {
-    return call<string>('network.getStorage', args);
-  },
+  getStorage(args: { contract: string; key: string }) {
+    return this.rpc.call<string>('network.getStorage', args);
+  }
 
-  getAllowance(args) {
-    return call<number>('network.getAllowance', args);
-  },
+  getAllowance(args: {
+    asset: Asset;
+    fromAddress: string;
+    toAddress: string;
+  }) {
+    return this.rpc.call<number>('network.getAllowance', args);
+  }
 
-  getAllowanceV2(args) {
-    return call<number>('network.getAllowanceV2', args);
-  },
+  getAllowanceV2(args: {
+    asset: Asset;
+    fromAddress: string;
+    toAddress: string;
+  }) {
+    return this.rpc.call<number>('network.getAllowance', args);
+  }
 
-  getBlock(args) {
-    return call<Block>('network.getBlock', args);
-  },
+  getBlock(args: { block: number | string }) {
+    return this.rpc.call<Block>('network.getBlock', args);
+  }
 
-  getTransaction(args) {
-    return call<Transaction>('network.getTransaction', args);
-  },
+  getTransaction(args: { txHash: string }) {
+    return this.rpc.call<Transaction>('network.getTransaction', args);
+  }
 
   getNetwork() {
-    return call<Network>('network.getNetwork');
-  },
+    return this.rpc.call<Network>('network.getNetwork');
+  }
 
-  getBalance(args) {
-    return call<Balance>('network.getBalance', args);
-  },
+  getBalance(args: { address: string }) {
+    return this.rpc.call<Balance>('network.getBalance', args);
+  }
 
-  getBalanceV2(args) {
-    return call<Balance>('network.getBalanceV2', args);
-  },
+  getBalanceV2(args: { address: string }) {
+    return this.rpc.call<Balance>('network.getBalanceV2', args);
+  }
 
   isConnected() {
-    return call<boolean>('network.isConnected');
-  },
-
-  getUnboundOng(args) {
-    return call<string>('network.getUnboundOng', args);
-  },
-  getContract(args) {
-    return call<Contract>('network.getContract', args);
-  },
-  getSmartCodeEvent(args) {
-    return call<any>('network.getSmartCodeEvent', args);
-  },
-  getBlockHeightByTxHash(args) {
-    return call<number>('network.getBlockHeightByTxHash', args);
-  },
-
-  getBlockHash(args) {
-    return call<string>('network.getBlockHash', args);
-  },
-  getBlockTxsByHeight(args) {
-    return call<BlockWithTxList>('network.getBlockTxsByHeight', args);
-  },
-  getGasPrice() {
-    return call<GasPrice>('network.getGasPrice');
-  },
-  getGrantOng(args) {
-    return call<string>('network.getGrantOng', args);
-  },
-  getMempoolTxCount() {
-    return call<number[]>('network.getMempoolTxCount');
-  },
-  getMempoolTxState(args) {
-    return call<any>('network.getMempoolTxState', args);
-  },
-  getVersion() {
-    return call<string>('network.getVersion');
+    return this.rpc.call<boolean>('network.isConnected');
   }
-};
+
+  getUnboundOng(args: { address: string }) {
+    return this.rpc.call<string>('network.getUnboundOng', args);
+  }
+
+  getContract(args: { hash: string }) {
+    return this.rpc.call<Contract>('network.getContract', args);
+  }
+
+  getSmartCodeEvent(args: { value: string | number }) {
+    return this.rpc.call<any>('network.getSmartCodeEvent', args);
+  }
+
+  getBlockHeightByTxHash(args: { hash: string }) {
+    return this.rpc.call<number>('network.getBlockHeightByTxHash', args);
+  }
+
+  getBlockHash(args: { height: number }) {
+    return this.rpc.call<string>('network.getBlockHash', args);
+  }
+
+  getBlockTxsByHeight(args: { height: number }) {
+    return this.rpc.call<BlockWithTxList>('network.getBlockTxsByHeight', args);
+  }
+
+  getGasPrice() {
+    return this.rpc.call<GasPrice>('network.getGasPrice');
+  }
+
+  getGrantOng(args: { address: string }) {
+    return this.rpc.call<string>('network.getGrantOng', args);
+  }
+
+  getMempoolTxCount() {
+    return this.rpc.call<number[]>('network.getMempoolTxCount');
+  }
+
+  getMempoolTxState(args: { hash: string }) {
+    return this.rpc.call<any>('network.getMempoolTxState', args);
+  }
+
+  getVersion() {
+    return this.rpc.call<string>('network.getVersion');
+  }
+}

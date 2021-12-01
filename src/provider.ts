@@ -1,5 +1,5 @@
 import { WindowPostMessageProxy } from '@ont-community/window-post-message-proxy';
-import { DApi } from './api';
+import { DApi, ExtensionType } from './api';
 import { MethodType, Rpc } from './rpc/rpc';
 
 let rpc: Rpc;
@@ -27,11 +27,6 @@ export function registerContentProxy({
     handle: (msg) => browser.runtime.sendMessage(msg),
     test: (msg) => msg.type === 'dAPI.js' && msg.source === 'page'
   });
-}
-
-export enum ExtensionType {
-  Cyano = 'cyano',
-  Onto = 'onto'
 }
 
 export function registerProvider({ provider, logMessages }: { provider: DApi; logMessages: boolean }) {
