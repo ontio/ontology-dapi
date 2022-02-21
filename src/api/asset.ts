@@ -24,4 +24,16 @@ export interface AssetApi {
    * @throws NO_ACCOUNT, MALFORMED_ACCOUNT, CANCELED
    */
   send({ to, asset, amount }: { to: string; asset: Asset; amount: string }): Promise<string>;
+
+  /**
+   * Initiates a transfer of amount asset from user account to recipient account.
+   * If the asset is ONG then the value is multiplied by 10**18.
+   * If the asset is ONT then the value is multiplied by 10**9.
+   *
+   * @param to Recipient of the transfer
+   * @param asset Asset to send
+   * @param amount Amount to send
+   * @throws NO_ACCOUNT, MALFORMED_ACCOUNT, CANCELED
+   */
+  sendV2({ to, asset, amount }: { to: string; asset: Asset; amount: string }): Promise<string>;
 }

@@ -38,7 +38,7 @@ export class NetworkApiImp implements NetworkApi {
     fromAddress: string;
     toAddress: string;
   }) {
-    return this.rpc.call<number>('network.getAllowance', args);
+    return this.rpc.call<number>('network.getAllowanceV2', args);
   }
 
   getBlock(args: { block: number | string }) {

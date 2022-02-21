@@ -20,4 +20,8 @@ export class AssetApiImp implements AssetApi {
   send(args: { to: string; asset: Asset; amount: string }) {
     return this.rpc.call<string>('asset.send', args);
   }
+
+  sendV2(args: { to: string; asset: Asset; amount: string }) {
+    return this.rpc.call<string>('asset.sendV2', args);
+  }
 }
