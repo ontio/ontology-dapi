@@ -1,3 +1,5 @@
+import { GovernanceApiImp } from './governance';
+import { GovernanceApi } from './../api/governance';
 import { DApi } from '../api';
 import { AssetApi } from '../api/asset';
 import { IdentityApi } from '../api/identity';
@@ -25,6 +27,7 @@ export class DApiImp implements DApi {
   smartContract: SmartContractApi;
   stateChannel: StateChannelApi;
   utils = utilsApi;
+  governance: GovernanceApi;
 
   constructor(rpc: Rpc) {
     this.asset = new AssetApiImp(rpc);
@@ -34,5 +37,6 @@ export class DApiImp implements DApi {
     this.provider = new ProviderApiImp(rpc);
     this.smartContract = new SmartContractApiImp(rpc);
     this.stateChannel = new StateChannelApiImp(rpc);
+    this.governance = new GovernanceApiImp(rpc);
   }
 }

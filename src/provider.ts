@@ -98,4 +98,14 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
 
   checkedRegister('stateChannel.login', provider.stateChannel.login);
   checkedRegister('stateChannel.sign', provider.stateChannel.sign);
+
+  checkedRegister('governance.stakePeers', provider.governance.stakePeers);
+  checkedRegister('governance.redeemPeers', provider.governance.redeemPeers);
+  checkedRegister('governance.withdrawFeeReward', provider.governance.withdrawFeeReward);
+  checkedRegister('governance.withdrawUnfrozenOnt', provider.governance.withdrawUnfrozenOnt);
+  checkedRegister('governance.withdrawPeerUnboundOng', provider.governance.withdrawPeerUnboundOng);
+  checkedRegister('governance.getAllPeerPool', provider.governance.getAllPeerPool);
+  checkedRegister('governance.getAttributes', provider.governance.getAttributes);
+  checkedRegister('governance.getStakeInfo', provider.governance.getStakeInfo);
+  checkedRegister('governance.getRewardFeeAmount', provider.governance.getRewardFeeAmount);
 }
