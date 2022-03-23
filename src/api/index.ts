@@ -1,4 +1,5 @@
 import { AssetApi } from './asset';
+import { GovernanceApi } from './governance';
 import { IdentityApi } from './identity';
 import { MessageApi } from './message';
 import { NetworkApi } from './network';
@@ -16,6 +17,7 @@ export { ProviderApi } from './provider';
 export { SmartContractApi } from './smartContract';
 export { StateChannelApi } from './stateChannel';
 export { UtilsApi } from './utils';
+export { GovernanceApi } from './governance';
 
 export interface DApi {
   asset: AssetApi;
@@ -26,4 +28,5 @@ export interface DApi {
   smartContract: SmartContractApi;
   utils: UtilsApi;
   stateChannel: StateChannelApi;
+  governance: GovernanceApi;
 }

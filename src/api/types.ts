@@ -147,3 +147,35 @@ export interface MessageRecord {
   tags: string[];
   message: string;
 }
+
+export interface PeerPoolItem {
+  index: number;
+  peerPubKey: string;
+  address: string;
+  status: number;
+  initPos: number;
+  totalPos: number;
+}
+
+export interface PeerAttributes {
+  peerPubKey: string;
+  maxAuthorize: string;
+  t2PeerCost: number; // peer cost, active in view T + 2
+  t1PeerCost: number; // peer cost, active in view T + 1
+  tPeerCost: number; // peer cost, active in view T
+  t2StakeCost: number;
+  t1StakeCost: number;
+  tStakeCost: number;
+  field4: string;
+}
+
+export interface StakeInfo {
+  peerPubKey: string;
+  address: string;
+  consensusPos: number;
+  freezePos: number;
+  newPos: number;
+  withdrawPos: number;
+  withdrawFreezePos: number;
+  withdrawUnfreezePos: number;
+}
