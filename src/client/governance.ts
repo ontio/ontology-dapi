@@ -45,7 +45,7 @@ export class GovernanceApiImp implements GovernanceApi {
   }
 
   getAllPeerPool() {
-    return this.rpc.call<Record<string, PeerPoolItem>>('governance.getAllPeerPool');
+    return this.rpc.call<PeerPoolItem[]>('governance.getAllPeerPool');
   }
 
   getAttributes(args: { peerPubKey: string }) {
