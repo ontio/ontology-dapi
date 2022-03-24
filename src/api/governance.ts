@@ -77,9 +77,9 @@ export interface GovernanceApi {
 
   /**
    * Query all the peer's state.
-   * @return Map of all peer's state
+   * @return List of all peer's state
    */
-  getAllPeerPool(): Promise<Record<string, PeerPoolItem>>;
+  getAllPeerPool(): Promise<PeerPoolItem[]>;
 
   /**
    * Query the peer attributes.
