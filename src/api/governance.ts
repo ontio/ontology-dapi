@@ -3,7 +3,7 @@ export interface GovernanceApi {
   /**
    * Stake for peers.
    * @param peerPubKeys Public key list of peers
-   * @param amounts Amounts for these peers('1000000' means 1 ont)
+   * @param amounts Amounts for these peers
    * @param gasPrice Suggested price of gas
    * @param gasLimit Suggested limit of gas
    * @return Transaction hash
@@ -23,7 +23,7 @@ export interface GovernanceApi {
   /**
    * Cancel stake for peers.
    * @param peerPubKeys Public key list of peers
-   * @param amounts Amounts for these peers('1000000' means 1 ont)
+   * @param amounts Amounts for these peers
    * @param gasPrice Suggested price of gas
    * @param gasLimit Suggested limit of gas
    * @return Transaction hash
@@ -98,7 +98,7 @@ export interface GovernanceApi {
 
   /**
    * Get the reward fee of user.
-   * @return Amount of reward fee(1000000 means 1 ont)
+   * @return Amount of reward fee
    */
   getRewardFeeAmount(): Promise<string>;
 }
