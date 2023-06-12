@@ -36,4 +36,18 @@ export interface AssetApi {
    * @throws NO_ACCOUNT, MALFORMED_ACCOUNT, CANCELED
    */
   sendV2({ to, asset, amount }: { to: string; asset: Asset; amount: string }): Promise<string>;
+
+  approve({
+    asset,
+    from,
+    to,
+    amount
+  }: {
+    asset: Asset;
+    from: string;
+    to: string;
+    amount: number | string;
+  }): Promise<string>;
+
+  getAllowance({ asset, from, to }: { asset: Asset; from: string; to: string }): Promise<string>;
 }
