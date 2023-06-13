@@ -24,4 +24,12 @@ export class AssetApiImp implements AssetApi {
   sendV2(args: { to: string; asset: Asset; amount: string }) {
     return this.rpc.call<string>('asset.sendV2', args);
   }
+
+  approve(args: { asset: Asset; from: string; to: string; amount: number | string }) {
+    return this.rpc.call<string>('asset.approve', args);
+  }
+
+  getAllowance(args: { asset: Asset; from: string; to: string }) {
+    return this.rpc.call<string>('asset.getAllowance', args);
+  }
 }
