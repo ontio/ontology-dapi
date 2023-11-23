@@ -6,7 +6,6 @@ export class NativeContractApiImp implements NativeContractApi {
   private rpc: Rpc;
 
   constructor(rpc: Rpc) {
-    alert(123456);
     this.rpc = rpc;
   }
 
