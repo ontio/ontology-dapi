@@ -5,6 +5,7 @@ import { MessageApi } from './message';
 import { NetworkApi } from './network';
 import { ProviderApi } from './provider';
 import { SmartContractApi } from './smartContract';
+import { NativeContractApi } from './nativeContract';
 import { StateChannelApi } from './stateChannel';
 import { UtilsApi } from './utils';
 
@@ -15,6 +16,7 @@ export { MessageApi } from './message';
 export { NetworkApi } from './network';
 export { ProviderApi } from './provider';
 export { SmartContractApi } from './smartContract';
+export { NativeContractApi } from './nativeContract';
 export { StateChannelApi } from './stateChannel';
 export { UtilsApi } from './utils';
 export { GovernanceApi } from './governance';
@@ -26,6 +28,7 @@ export interface DApi {
   network: NetworkApi;
   provider: ProviderApi;
   smartContract: SmartContractApi;
+  nativeContract: NativeContractApi;
   utils: UtilsApi;
   stateChannel: StateChannelApi;
   governance: GovernanceApi;

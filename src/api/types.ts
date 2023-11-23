@@ -179,3 +179,11 @@ export interface StakeInfo {
   withdrawFreezePos: number;
   withdrawUnfreezePos: number;
 }
+
+export interface NativeContractApiParams {
+  ontid: string;
+  publicKey: string;
+  gasPrice: string;
+  gasLimit: string;
+  payer?: string;
+}
