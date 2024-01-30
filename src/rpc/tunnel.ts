@@ -1,4 +1,4 @@
-import { Runtime } from 'webextension-polyfill-ts';
+import { Runtime } from 'webextension-polyfill';
 
 export type CallbackType = (msg: Request, caller: Caller) => Promise<Response> | void;
 export type PostMessageType = (msg: Request) => Promise<Response>;

@@ -15,7 +15,7 @@ export function registerContentProxy({
   logWarnings = false,
   extension = ExtensionType.Cyano
 }: RegisterContentProxyParams) {
-  const { browser } = require('webextension-polyfill-ts');
+  const browser = require('webextension-polyfill');
   const windowPostMessageProxy = new WindowPostMessageProxy({
     logMessages,
     suppressWarnings: !logWarnings,
@@ -30,7 +30,7 @@ export function registerContentProxy({
 }
 
 export function registerProvider({ provider, logMessages }: { provider: DApi; logMessages: boolean }) {
-  const { browser } = require('webextension-polyfill-ts');
+  const browser = require('webextension-polyfill');
   rpc = new Rpc({
     source: 'background',
     destination: 'page',
