@@ -109,6 +109,9 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   checkedRegister('governance.withdrawFeeReward', provider.governance.withdrawFeeReward);
   checkedRegister('governance.withdrawUnfrozenOnt', provider.governance.withdrawUnfrozenOnt);
   checkedRegister('governance.withdrawPeerUnboundOng', provider.governance.withdrawPeerUnboundOng);
+  checkedRegister('governance.setFeePercentage', provider.governance.setFeePercentage);
+  checkedRegister('governance.changeMaxAuthorization', provider.governance.changeMaxAuthorization);
+  checkedRegister('governance.quitNode', provider.governance.quitNode);
   checkedRegister('governance.getAllPeerPool', provider.governance.getAllPeerPool);
   checkedRegister('governance.getAttributes', provider.governance.getAttributes);
   checkedRegister('governance.getStakeInfo', provider.governance.getStakeInfo);

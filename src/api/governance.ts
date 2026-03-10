@@ -96,6 +96,66 @@ export interface GovernanceApi {
   withdrawPeerUnboundOng({gasPrice, gasLimit}: {gasPrice?: string, gasLimit?: string}): Promise<string>;
 
   /**
+   * Set node profit distribution ratio.
+   * @param peerPubKey Public key of peer
+   * @param peerCost Ratio of node stake profit allocated to Node
+   * @param stakeCost Ratio of user stake profit allocated to Node
+   * @param gasPrice Suggested price of gas
+   * @param gasLimit Suggested limit of gas
+   * @return Transaction hash
+   */
+  setFeePercentage({
+    peerPubKey,
+    peerCost,
+    stakeCost,
+    gasPrice,
+    gasLimit
+  }: {
+    peerPubKey: string,
+    peerCost: number,
+    stakeCost: number,
+    gasPrice?: string,
+    gasLimit?: string
+  }): Promise<string>;
+
+  /**
+   * Set max stake amount for peer.
+   * @param peerPubKey Public key of peer
+   * @param maxAuthorize Max stake amount
+   * @param gasPrice Suggested price of gas
+   * @param gasLimit Suggested limit of gas
+   * @return Transaction hash
+   */
+  changeMaxAuthorization({
+    peerPubKey,
+    maxAuthorize,
+    gasPrice,
+    gasLimit
+  }: {
+    peerPubKey: string,
+    maxAuthorize: string,
+    gasPrice?: string,
+    gasLimit?: string
+  }): Promise<string>;
+
+  /**
+   * Quit node.
+   * @param peerPubKey Public key of peer
+   * @param gasPrice Suggested price of gas
+   * @param gasLimit Suggested limit of gas
+   * @return Transaction hash
+   */
+  quitNode({
+    peerPubKey,
+    gasPrice,
+    gasLimit
+  }: {
+    peerPubKey: string,
+    gasPrice?: string,
+    gasLimit?: string
+  }): Promise<string>;
+
+  /**
    * Query all the peer's state.
    * @return List of all peer's state
    */

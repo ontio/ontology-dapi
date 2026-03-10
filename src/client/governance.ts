@@ -53,6 +53,29 @@ export class GovernanceApiImp implements GovernanceApi {
     return this.rpc.call<string>('governance.withdrawPeerUnboundOng', args);
   }
 
+  setFeePercentage(args: {
+    peerPubKey: string,
+    peerCost: number,
+    stakeCost: number,
+    gasPrice?: string,
+    gasLimit?: string
+  }) {
+    return this.rpc.call<string>('governance.setFeePercentage', args);
+  }
+
+  changeMaxAuthorization(args: {
+    peerPubKey: string,
+    maxAuthorize: string,
+    gasPrice?: string,
+    gasLimit?: string
+  }) {
+    return this.rpc.call<string>('governance.changeMaxAuthorization', args);
+  }
+
+  quitNode(args: { peerPubKey: string, gasPrice?: string, gasLimit?: string }) {
+    return this.rpc.call<string>('governance.quitNode', args);
+  }
+
   getAllPeerPool() {
     return this.rpc.call<PeerPoolItem[]>('governance.getAllPeerPool');
   }
