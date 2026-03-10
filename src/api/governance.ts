@@ -2,7 +2,6 @@ import { PeerPoolItem, PeerAttributes, StakeInfo } from './types';
 export interface GovernanceApi {
   /**
    * Register candidate peer.
-   * @param stakeAddress Stake wallet address
    * @param peerPubKey Operator wallet public key
    * @param amount Stake amount
    * @param gasPrice Suggested price of gas
@@ -10,13 +9,11 @@ export interface GovernanceApi {
    * @return Transaction hash
    */
   registerCandidate({
-    stakeAddress,
     peerPubKey,
     amount,
     gasPrice,
     gasLimit
   }: {
-    stakeAddress: string,
     peerPubKey: string,
     amount: string,
     gasPrice?: string,

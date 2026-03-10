@@ -10,7 +10,6 @@ export class GovernanceApiImp implements GovernanceApi {
   }
 
   registerCandidate(args: {
-    stakeAddress: string,
     peerPubKey: string,
     amount: string,
     gasPrice?: string,
