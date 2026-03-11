@@ -21,6 +21,46 @@ export interface GovernanceApi {
   }): Promise<string>;
 
   /**
+   * Add initial stake for node.
+   * @param peerPubKey Operator wallet public key
+   * @param amount Amount of initial stake to add
+   * @param gasPrice Suggested price of gas
+   * @param gasLimit Suggested limit of gas
+   * @return Transaction hash
+   */
+  addInitPos({
+    peerPubKey,
+    amount,
+    gasPrice,
+    gasLimit
+  }: {
+    peerPubKey: string,
+    amount: string,
+    gasPrice?: string,
+    gasLimit?: string
+  }): Promise<string>;
+
+  /**
+   * Reduce initial stake for node.
+   * @param peerPubKey Operator wallet public key
+   * @param amount Amount of initial stake to reduce
+   * @param gasPrice Suggested price of gas
+   * @param gasLimit Suggested limit of gas
+   * @return Transaction hash
+   */
+  reduceInitPos({
+    peerPubKey,
+    amount,
+    gasPrice,
+    gasLimit
+  }: {
+    peerPubKey: string,
+    amount: string,
+    gasPrice?: string,
+    gasLimit?: string
+  }): Promise<string>;
+
+  /**
    * Stake for peers.
    * @param peerPubKeys Public key list of peers
    * @param amounts Amounts for these peers

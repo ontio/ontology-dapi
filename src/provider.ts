@@ -104,6 +104,8 @@ export function registerProvider({ provider, logMessages }: { provider: DApi; lo
   checkedRegister('stateChannel.sign', provider.stateChannel.sign);
 
   checkedRegister('governance.registerCandidate', provider.governance.registerCandidate);
+  checkedRegister('governance.addInitPos', provider.governance.addInitPos);
+  checkedRegister('governance.reduceInitPos', provider.governance.reduceInitPos);
   checkedRegister('governance.stakePeers', provider.governance.stakePeers);
   checkedRegister('governance.redeemPeers', provider.governance.redeemPeers);
   checkedRegister('governance.withdrawFeeReward', provider.governance.withdrawFeeReward);

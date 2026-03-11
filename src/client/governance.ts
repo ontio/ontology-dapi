@@ -18,6 +18,24 @@ export class GovernanceApiImp implements GovernanceApi {
     return this.rpc.call<string>('governance.registerCandidate', args);
   }
 
+  addInitPos(args: {
+    peerPubKey: string,
+    amount: string,
+    gasPrice?: string,
+    gasLimit?: string
+  }) {
+    return this.rpc.call<string>('governance.addInitPos', args);
+  }
+
+  reduceInitPos(args: {
+    peerPubKey: string,
+    amount: string,
+    gasPrice?: string,
+    gasLimit?: string
+  }) {
+    return this.rpc.call<string>('governance.reduceInitPos', args);
+  }
+
   stakePeers(args: {
     peerPubKeys: string[],
     amounts: string[],
